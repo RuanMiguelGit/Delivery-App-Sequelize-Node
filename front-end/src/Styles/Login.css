@@ -1,0 +1,142 @@
+body {
+  background-color: #313131;
+}
+
+.LoginHolder {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  margin-left: 30%;
+  margin-top: 25%;
+  width: 40%;
+}
+
+.Holder {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: center;
+  margin-bottom: 10%;
+  margin-left: 25%;
+  margin-top: 15%;
+  width: 50%;
+}
+
+.LoginButton {
+  background-color: #021444; /* Green */
+  border: none;
+  border-radius: 7%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  height: 12%;
+  margin-left: 35%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  width: 30%;
+
+}
+
+.LoginButton:hover {
+  background-color: #4caf50; /* Green */
+  color: white;
+
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  size: 50%;
+  width: 100%;
+
+}
+
+.Noaccount {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 5%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+.Noaccount:hover {
+  background-color: #0432ff; /* Green */
+  color: white;
+}
+
+.form {
+  background-color: white;
+  border: 3px solid white;
+  box-shadow: black 0 22px 70px 4px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: space-between;
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 400px;}
+
+
+.error {
+  background-color: rgba(233, 233, 233, 0.671);
+  border-radius: 1%;
+  color: red;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 7%;
+  margin-top: 2%;
+  text-align: center;
+  width: 350px;
+
+  /* border: 2px solid #887f7f; */
+}
+
+.input-back {
+  background-color: white;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  color: black;
+  display: inline-block;
+  margin: 8px 0;
+  margin-top: 10%;
+  padding: 12px 20px;
+  width: 100%;
+
+}
+
+.input-choice {
+  background-color: white;
+  color: black;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-top: 5%;
+  size: 50%;
+  width: 80%;
+}
+
+.title {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingImg {
+  height: 100px;
+  width: 100px;
+}

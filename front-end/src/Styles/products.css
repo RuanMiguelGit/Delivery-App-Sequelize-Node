@@ -1,0 +1,67 @@
+.products {
+  background-color: rgb(221, 212, 212);
+  border-radius: 5px;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2);
+  color: black;
+  display: inline-block;
+  filter: drop-shadow(5px 5px 6px black);
+  font-family: 'Arial';
+  height: 300px;
+  margin: 2%;
+  width: 300px;
+
+}
+
+.product-name {
+  background-color: white;
+}
+
+.product-price {
+  background-color: white;
+}
+
+.product-picture {
+  filter: drop-shadow(1px 1px 3px black);
+  height: 150px;
+  width: 250px;
+}
+
+.product-value {
+  background-color: white;
+  color: black;
+  font-size: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin-left : 40%;
+  text-align: center;
+  text-decoration: bold;
+  vertical-align: middle;
+  width: 50px;
+}
+
+.product-increase {
+  background-color: white;
+  color: black;
+  display: inline-block;
+  font-size: 30px;
+  height: 30px;
+  line-height: 20%;
+  margin-right: 5%;
+  margin-top: 10%;
+  text-align: center;
+  width: 50px;
+}
+
+.product-decrease {
+  background-color: white;
+  border-radius: 100%;
+  color: black;
+  display: block;
+  font-size: 30px;
+  height: 50px;
+  margin-bottom: 20%;
+  margin-left: 70%;
+  margin-top: -25%;
+  outline: 0;
+  width: 50px;
+}

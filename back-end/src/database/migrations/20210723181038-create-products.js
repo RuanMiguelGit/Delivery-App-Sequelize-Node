@@ -1,27 +1,33 @@
 'use strict';
 
+// doc:
+// https://dev.mysql.com/doc/refman/8.0/en/precision-math-decimal-characteristics.html
+// A sintaxe da declaração de uma DECIMALcoluna é . Os intervalos de valores para os argumentos são os seguintes: DECIMAL(M,D)
+// M é o número máximo de dígitos (a precisão). Tem um intervalo de 1 a 65.
+// D é o número de dígitos à direita da vírgula decimal (a escala). Ele tem um intervalo de 0 a 30 e não deve ser maior que M.
+// Se D for omitido, o padrão será 0. Se M for omitido, o padrão será 10.
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('products', { 
-      product_id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        field: 'id',
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true, // tem quer ser único
+        type: Sequelize.STRING(100),
+        unique: true,
       },
       price: {
         allowNull: false,
-        type: Sequelize.DECIMAL(4,2), // 9999,99
+        type: Sequelize.DECIMAL(4,2),
       }, 
       url_image: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
         defaultValue: '',
       },  
     });
