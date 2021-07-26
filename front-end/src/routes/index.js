@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Registro';
 import Products from '../pages/Products';
 import Admins from '../pages/AdminHome';
+import ClientOrders from '../pages/ClientOrders';
 
 function Routes() {
   return (
@@ -12,8 +13,8 @@ function Routes() {
         <Route exact path="/customer/products" component={ Products } />
         <Route exact path="/admin/manage" component={ Admins } />
         <Route exact path="/register" component={ Register } />
+        <Route exact path="/customer/orders" component={ ClientOrders } />
         {/* <Route exact path="/customer/checkout" component={  } />
-        <Route exact path="/customer/orders" component={  } />
         <Route exact path="/customer/orders/:id" component={  } />
         <Route exact path="/customer/orders/:idVenda" component={  } />
         <Route exact path="/seller/orders" component={  } />
