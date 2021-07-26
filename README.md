@@ -200,9 +200,9 @@ Para facilitar o entendimento, podemos dividir a aplicação em ** 4 fluxos prin
 
 **⚠️ Lembre-se de escrever testes unitários e sinta-se livre para alterar a UI. Contudo, respeite os atributos `data-testid`, pois eles serão usados na correção do projeto.**
 
-Você pode ler mais sobre os atributos que serão utilizados para testes [neste link](https://www.eduardopedroso.com.br/?p=494).
+Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.mozilla.org/pt-BR/docs/Learn/HTML/Howto/Use_data_attributes).
 
-**⚠️ Para ver os comentários sobre cada componente, basta clicar no ícone de comentários no Figma (lado esquerdo superior).**
+**⚠️ Para ver os comentários sobre cada componente ⚠️:** Estando logado, basta clicar no ícone de comentários no Figma (lado esquerdo superior).
 
 ![image](https://res.cloudinary.com/drdpedroso/image/upload/c_scale,w_400/v1575815877/Screenshot_2019-12-08_at_11.37.25_kzt7rl.png)
 
@@ -212,7 +212,7 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 
     - Serão 10 dias de projeto.
 
-    - Data de entrega para avaliação final do projeto: `11/08/2021 - 14:00h`.
+    - Data de entrega para avaliação final do projeto: `dd/mm/yyyy - 14:00h`.
 
 ---
 
@@ -222,9 +222,9 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 
 1. Clone o repositório
 
-- `git clone git@github.com:tryber/sd-08-project-delivery-app.git`.
+- `git clone git@github.com:tryber/sd-0x-project-delivery-app.git`.
 - Entre na pasta do repositório que você acabou de clonar:
-  - `cd sd-08-project-delivery-app`
+  - `cd sd-0x-project-delivery-app`
 - Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
 
 2. Instale as dependências
@@ -261,7 +261,7 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 
 6. Crie um novo `Pull Request` _(PR)_
 
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-08-project-delivery-app/pulls)
+- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-delivery-app/pulls)
 - Clique no botão verde _"New pull request"_
 - Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
 - Coloque um título para a sua _Pull Request_
@@ -269,7 +269,7 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 - Clique no botão verde _"Create pull request"_
 - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
 - **Não se preocupe em preencher mais nada por enquanto!**
-- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-08-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
+- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
 
 7. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Linter_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
@@ -353,8 +353,8 @@ Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu 
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-- `sd-08-project-delivery-app/back-end/package.json`
-- `sd-08-project-delivery-app/front-end/package.json`
+- `sd-0x-project-delivery-app/back-end/package.json`
+- `sd-0x-project-delivery-app/front-end/package.json`
 
 Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto de forma individual, ou seja, precisa-se executar esse comando dentro da pasta `back-end` e também na pasta `front-end` e depois `npm run lint` dentro de cada uma dessas pastas, assim você verifica as particularidades individualmente. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
@@ -1365,7 +1365,7 @@ Para sinalizar que o seu projeto está pronto para _"Code Review"_, faça o segu
 
   - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-08`.
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
 
 Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
