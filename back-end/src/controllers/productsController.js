@@ -13,8 +13,8 @@ const getAllProductsSales = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: 'Algo deu errado', err: err.message });
   }
-}
+};
 
 module.exports = {
   getAllProductsSales,
-}
+};
