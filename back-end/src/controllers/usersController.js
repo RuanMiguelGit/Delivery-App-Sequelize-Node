@@ -1,6 +1,6 @@
 const { sale, user } = require('../database/models');
 
-const getAllProductsSales = async (req, res) => {
+const getAllUsersSale = async (req, res) => {
   try {
     const data = await user.findAll({
       include: [
@@ -16,5 +16,5 @@ const getAllProductsSales = async (req, res) => {
 }
 
 module.exports = {
-  getAllProductsSales,
+  getAllUsersSale,
 }

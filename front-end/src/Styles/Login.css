@@ -1,141 +1,142 @@
-body{
-    background-color: #313131;
+body {
+  background-color: #313131;
 }
 
 .LoginHolder {
-    display: flex;
-    flex-direction: column;
-    margin-top: 25%;
-    margin-bottom: 10%;
-    margin-left: 30%;
-    width: 40%;
-    color:whitesmoke
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  margin-left: 30%;
+  margin-top: 25%;
+  width: 40%;
 }
- 
-.Holder {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 15%;
-    margin-bottom: 10%;
-    margin-left: 25%;
-    width: 50%;
-    height:50%;
-    background-color: white;
-    border-radius: 10%;
-    border: 2px solid black;
-} 
 
-.LoginButton{ 
+.Holder {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: center;
+  margin-bottom: 10%;
+  margin-left: 25%;
+  margin-top: 15%;
+  width: 50%;
+}
+
+.LoginButton {
   background-color: #021444; /* Green */
   border: none;
- border-radius: 7%;
-  width: 30%;
-  height:12%;
-  margin-left: 35%;
+  border-radius: 7%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: white;
+  display: inline-block;
+  font-size: 16px;
+  height: 12%;
+  margin-left: 35%;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  width: 30%;
 
 }
 
 .LoginButton:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
+  background-color: #4caf50; /* Green */
+  color: white;
 
-  }
-  .LoginButton {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
-
-  .disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-.input{
-    background-color: white;
-    width: 100%;
-    size: 50%;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    
 }
 
-.Noaccount{
-  background-color: #4CAF50; /* Green */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  size: 50%;
+  width: 100%;
+
+}
+
+.Noaccount {
+  background-color: #4caf50; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin-bottom: 5%;
-  
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+
 }
 
 .Noaccount:hover {
-    background-color: #0432ff; /* Green */
-    color: white;
-  }
+  background-color: #0432ff; /* Green */
+  color: white;
+}
+
 .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left:35%;
-    margin-top:10%;
-    height: 450px;
-    width: 400px;
-    background-color: rgb(255, 255, 255);
-    border: 3px solid #ffffff;
-    box-shadow: rgb(0, 0, 0) 0px 22px 70px 4px;}
+  background-color: white;
+  border: 3px solid white;
+  box-shadow: black 0 22px 70px 4px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: space-between;
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 400px;}
 
 
 .error {
-  line-height: 50px;
-  text-align: center;
-  margin-left:7%;
-  margin-top:2%;
-  height: 50px;
-  width: 350px;
   background-color: rgba(233, 233, 233, 0.671);
-  color: rgb(255, 0, 0);
   border-radius: 1%;
+  color: red;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 7%;
+  margin-top: 2%;
+  text-align: center;
+  width: 350px;
+
   /* border: 2px solid #887f7f; */
 }
-.input-back{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
+
+.input-back {
+  background-color: white;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  background-color: white;
+  color: black;
+  display: inline-block;
+  margin: 8px 0;
   margin-top: 10%;
-  color:black
+  padding: 12px 20px;
+  width: 100%;
 
 }
 
 .input-choice {
-    background-color: white;
-    margin-left: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 80%;
-    size: 50%;
-    color:black
-    }
-
-.title {
-    display: flex;
-    flex-direction: column;
-    color:white
+  background-color: white;
+  color: black;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-top: 5%;
+  size: 50%;
+  width: 80%;
 }
 
-.loadingImg{
-height: 100px;
-width: 100px;
+.title {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingImg {
+  height: 100px;
+  width: 100px;
 }
