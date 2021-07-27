@@ -9,14 +9,14 @@ export default function ClientOrders() {
   const history = useHistory();
   useEffect(() => {
     setLoading(true);
-    getData('http://localhost:3001/customer/orders')
+    getData('http://localhost:3001/customer/orders/2')
       .then((data) => {
         console.log(`cheguei aqui ${data}`);
         setUserSales(data);
       });
     setLoading(false);
   }, []);
-  if (loading === false) {
+  if (loading === true) {
     return (
       <Loading />
     );
@@ -33,9 +33,10 @@ export default function ClientOrders() {
           tabIndex="0"
           onKeyDown={ () => history.push(`/orders/${obj.id}`) }
           key={ index }
+          style={ { backgroundColor: 'white', width: '50%' } }
         >
           <p data-testid={ `customer_orders__element-order-id-${obj.id}` }>
-            {`Pedido ${index}`}
+            {`Pedido ${index + 1}`}
           </p>
           <p data-testid={ `customer_orders__element-delivery-status-${obj.id}` }>
             {`Status: ${obj.status}`}
@@ -45,10 +46,10 @@ export default function ClientOrders() {
               <td
                 data-testid={ `customer_products__element-order-date-${obj.id}` }
               >
-                {obj.sale_date}
+                {obj.saleDate}
               </td>
               <td data-testid={ `customer_orders__element-card-price-${obj.id}` }>
-                { `R$ ${obj.total_price.replace('.', ',')} ` }
+                { `R$ ${obj.totalPrice.replace('.', ',')} ` }
               </td>
             </tr>
           </table>
