@@ -1,19 +1,22 @@
 /* eslint-disable */
-import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import appContext from '../context/appContext';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Error from '../components/Error';
-import Products from './Products';
-import Loading from '../components/Loading.js';
+import Loading from '../components/Loading';
 import '../Styles/Login.css';
-import { useHistory, Redirect } from 'react-router-dom';
 import { sendLogin } from '../services/apiRequest';
 // import { saveUserInLocalStorage, getUserRole, getUserToken } from '../services/localStorage';
-
+const six = 6;
 const Login = () => {
-  const { setLoginEmail, setLoginPassword, loginEmail, loginPassword } = useContext(appContext);
+  const {
+    setLoginEmail,
+    setLoginPassword,
+    loginEmail,
+    loginPassword } = useContext(appContext);
+
   const [formValid, setValid] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
   const [reqError, setReqError] = useState([]);
@@ -34,11 +37,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    !validEmail(loginEmail) || loginPassword.length < 6 ? setValid(true) : setValid(false);
+    if (!validEmail(loginEmail) || loginPassword.length < six) {
+      return setValid(true);
+    }
+    return setValid(false);
   }, [loginEmail, loginPassword]);
 
   useEffect(() => {
-    if (userInfo !== 0 && userInfo.role === 'customer') return history.push('/customer/products');
+    if (userInfo.role === 'customer') return history.push('/customer/products');
   }, [history, userInfo]);
 
   const SendLogin = async (e) => {
@@ -61,7 +67,6 @@ const Login = () => {
       return <Loading />;
     } if (reqError.length > 0) {
       return <Error error={ reqError } testId="common_login__element-invalid-email" />;
-      setLoading(false);
     }
     return null;
   };
@@ -72,35 +77,42 @@ const Login = () => {
   return (
 
     <form>
+      <div className="form">
+        <Input
+          name="email"
+          type="input"
+          value={ loginEmail }
+          change={ setLoginEmail }
+          inputclass="input-back"
+          testId="common_login__input-email"
+        />
+        <Input
+          name="senha"
+          type="password"
+          value={ loginPassword }
+          change={ setLoginPassword }
+          inputclass="input-back"
+          testId="common_login__input-password"
+        />
 
-      <label>
-        <div className="form">
-          <Input
-            name="email"
-            type="input"
-            value={ loginEmail }
-            change={ setLoginEmail }
-            inputclass="input-back"
-            testId="common_login__input-email"
-          />
-          <Input
-            name="senha"
-            type="password"
-            value={ loginPassword }
-            change={ setLoginPassword }
-            inputclass="input-back"
-            testId="common_login__input-password"
-          />
+        <Button
+          onClick={ SendLogin }
+          disable={ formValid }
+          btnclass="LoginButton"
+          name="Entrar"
+          testId="common_login__button-login"
+        />
+        <Button
+          onClick={ Register }
+          disable={ false }
+          btnclass="Noaccount"
+          name="Ainda não tenho conta"
+          testId="common_login__button-register"
+        />
+        {errorDisplay()}
 
-          <Button onClick={ SendLogin } disable={ formValid } btnclass="LoginButton" name="Entrar" testId="common_login__button-login" />
-          <Button onClick={ Register } disable={ false } btnclass="Noaccount" name="Ainda não tenho conta" testId="common_login__button-register" />
-          {errorDisplay()}
+      </div>
 
-        </div>
-      </label>
-      {/* {loading ? <Loading /> : reqError.length !== 0 ? <Error error={reqError}/> :''} */}
-
-      {/* {loading ? <Loading />:<p>{reqError.map(item => item.message)}</p>} */}
     </form>
   );
 };

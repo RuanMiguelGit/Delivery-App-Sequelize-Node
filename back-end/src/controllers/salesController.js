@@ -1,13 +1,12 @@
 const { sale, user, product } = require('../database/models');
 
-
 const getAllSalesUser = async (req, res) => {
   try {
     const data = await sale.findAll({
       attributes: { exclude: ['user_id', 'seller_id'] },
       include: [
-        { model: user, as: 'user', attributes: { exclude: ['id'] }, },
-        { model: user, as: 'seller', attributes: { exclude: ['id'] }, },
+        { model: user, as: 'user', attributes: { exclude: ['id'] } },
+        { model: user, as: 'seller', attributes: { exclude: ['id'] } },
       ],
     });
     console.log(data);
@@ -15,7 +14,7 @@ const getAllSalesUser = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: 'Algo deu errado', err: err.message });
   }
-}
+};
 
 const getAllSalesProducts = async (req, res) => {
   try {
@@ -30,9 +29,9 @@ const getAllSalesProducts = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: 'Algo deu errado', err: err.message });
   }
-}
+};
 
 module.exports = {
   getAllSalesUser,
   getAllSalesProducts,
-}
+};
