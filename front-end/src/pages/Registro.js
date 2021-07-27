@@ -47,7 +47,7 @@ const Registro = () => {
 
   const registration = async () => {
     setLoading(true);
-    await sendRegister('http://localhost:3001/register', name, email, password, role)
+    await sendRegister(name, email, password, role)
       .then((res) => {
         setRegisterInfo(res.data.newUser);
       })

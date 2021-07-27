@@ -35,7 +35,7 @@ export const sendLogin = async (url, email, password) => {
   return response;
 };
 
-export const sendRegister = async (url, name, email, password, role) => {
+export const sendRegister = async (name, email, password, role) => {
   const data = {
     name,
     email,
@@ -51,7 +51,7 @@ export const sendRegister = async (url, name, email, password, role) => {
 
     },
   };
-  const response = await axios.post(url, data, axiosConfig);
+  const response = await axios.post('http://localhost:3001/register', data, axiosConfig);
 
   return response;
 };
