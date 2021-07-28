@@ -4,13 +4,13 @@ const axios = require('axios');
 export const getData = async (url) => {
   const products = await axios.get(url)
     .then((res) => {
-      console.log(res);
-      console.log(res.data);
+      // console.log(res);
+      // console.log(res.data);
       return res.data;
     })
     .then((data) => data)
     .catch((err) => {
-      console.log(err);
+      console.log('deu ruim', err);
     });
 
   return products;
@@ -26,7 +26,7 @@ export const sendLogin = async (url, email, password) => {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
+      'Accept': 'application/json',
 
     },
   };
@@ -47,7 +47,7 @@ export const sendRegister = async (name, email, password, role) => {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
+      'Accept': 'application/json',
 
     },
   };

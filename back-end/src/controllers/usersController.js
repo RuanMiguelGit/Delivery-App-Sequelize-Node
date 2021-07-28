@@ -1,5 +1,6 @@
 const { sale, user } = require('../database/models');
 
+// callback criadas para testes das associações
 const getAllUsersSale = async (req, res) => {
   try {
     const data = await user.findAll({
@@ -14,6 +15,9 @@ const getAllUsersSale = async (req, res) => {
     return res.status(500).json({ message: 'Algo deu errado', err: err.message });
   }
 };
+// ----------------------------------------------------------------------
+
+// callbacks validas
 
 module.exports = {
   getAllUsersSale,

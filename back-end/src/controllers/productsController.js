@@ -1,14 +1,26 @@
-const { sale, user } = require('../database/models');
+const { sale, product } = require('../database/models');
 
+// callback criadas para testes das associações
 const getAllProductsSales = async (req, res) => {
   try {
-    const data = await user.findAll({
+    const data = await product.findAll({
       include: [
-        { model: sale, as: 'saleByUser', attributes: { exclude: ['user_id', 'seller_id'] } },
-        { model: sale, as: 'saleBySeller', attributes: { exclude: ['user_id', 'seller_id'] } },
+        { model: sale, as: 'sales', through: { attributes: [] } },
       ],
     });
-    console.log(data);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+  }
+};
+// ----------------------------------------------------------------------
+
+// callbacks validas
+const getProducts = async (req, res) => {
+  try {
+    const data = await product.findAll({
+      attributes: { exclude: ['sales'] },
+    });
     return res.status(200).json(data);
   } catch (err) {
     return res.status(500).json({ message: 'Algo deu errado', err: err.message });
@@ -17,4 +29,5 @@ const getAllProductsSales = async (req, res) => {
 
 module.exports = {
   getAllProductsSales,
+  getProducts,
 };
