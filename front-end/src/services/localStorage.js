@@ -14,3 +14,9 @@ export const getUserToken = () => {
   if (user && user[0].token) return user[0].token;
   return '';
 };
+
+export const getUserEmail = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.email) return user.email;
+  return '';
+};
