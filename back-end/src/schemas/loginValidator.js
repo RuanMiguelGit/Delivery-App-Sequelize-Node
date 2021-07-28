@@ -1,4 +1,6 @@
 const { user } = require('../database/models');
+const jwt = require('jsonwebtoken');
+const secret = 'seusecretdetoken';
 
 const loginUservalidator = async (email, hash) => {
     const data = await user.findOne({
@@ -17,6 +19,24 @@ const loginUservalidator = async (email, hash) => {
     return {};
 };
 
+const tokenGenerator = async (email, hash) => {
+    const data = await user.findOne({
+        where: { email, password: hash },
+    })
+    
+    .then((res) => res)
+    .catch((err) => err);
+    const jwtConfig = {
+        expiresIn: '7d',
+        algorithm: 'HS256',
+      };
+      const {id, name} = data
+      
+      const token = jwt.sign({ data:id, email, name }, secret, jwtConfig);
+     return { token };
+}
+
 module.exports = {
     loginUservalidator,
+    tokenGenerator
 };
