@@ -6,7 +6,6 @@ async function toFindElement(page, selector) {
     await page.waitForTimeout(100);
 
     await page.waitForSelector(selector, {
-      visible: true,
       timeout,
     });
 
