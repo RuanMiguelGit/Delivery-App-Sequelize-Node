@@ -1,6 +1,14 @@
 /* eslint-disable */
 const axios = require('axios');
 
+const axiosConfig = {
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Access-Control-Allow-Origin': '*',
+    'Accept': 'application/json',
+
+  },
+};
 export const getData = async (url) => {
   const products = await axios.get(url)
     .then((res) => {
@@ -22,14 +30,6 @@ export const sendLogin = async (url, email, password) => {
     password,
   };
 
-  const axiosConfig = {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-
-    },
-  };
   const response = await axios.post(url, data, axiosConfig);
 
   return response;
@@ -43,14 +43,6 @@ export const sendRegister = async (name, email, password, role) => {
     role,
   };
 
-  const axiosConfig = {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-
-    },
-  };
   const response = await axios.post('http://localhost:3001/register', data, axiosConfig);
 
   return response;
@@ -61,14 +53,6 @@ export const requestUser = async (url, email) => {
     email,
   };
 
-  const axiosConfig = {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-
-    },
-  };
   const response = await axios.post(url, data, axiosConfig);
 
   return response;

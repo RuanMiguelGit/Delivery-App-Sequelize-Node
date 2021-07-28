@@ -9,10 +9,8 @@ export default function ClientOrders() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const email = getUserEmail();
-  // 'fulana@deliveryapp.com';
-
   useEffect(() => {
+    const email = getUserEmail();
     setLoading(true);
     requestUser('http://localhost:3001/customer/orders', email)
       .then((data) => {
