@@ -32,10 +32,13 @@ const getAllSalesProducts = async (req, res) => {
 };
 
 const getSalesByUser = async (req, res) => {
-  const userId = req.params.id;
+  const { email } = req.body;
   try {
+    const { id } = await user.findOne({
+      where: { email }
+    });
     const data = await sale.findAll({
-      where: { userId },
+      where: { userId: id },
     });
     return res.status(200).json(data);
   } catch (err) {

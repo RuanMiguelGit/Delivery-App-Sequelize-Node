@@ -55,3 +55,21 @@ export const sendRegister = async (name, email, password, role) => {
 
   return response;
 };
+
+export const requestUser = async (url, email) => {
+  const data = {
+    email,
+  };
+
+  const axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
+      Accept: 'application/json',
+
+    },
+  };
+  const response = await axios.post(url, data, axiosConfig);
+
+  return response;
+};
