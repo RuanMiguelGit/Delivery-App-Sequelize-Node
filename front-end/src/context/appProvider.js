@@ -6,12 +6,15 @@ import appContext from './appContext';
 function Provider({ children }) {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [cart, setCart] = useState([]);
 
   const contextValue = {
     loginEmail,
     setLoginEmail,
     loginPassword,
     setLoginPassword,
+    cart,
+    setCart,
   };
 
   return (

@@ -1,16 +1,20 @@
 /* eslint-disable */
 const axios = require('axios');
 
+const axiosConfig = {
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Access-Control-Allow-Origin': '*',
+    Accept: 'application/json',
+
+  },
+};
 export const getData = async (url) => {
   const products = await axios.get(url)
-    .then((res) => {
-      console.log(res);
-      console.log(res.data);
-      return res.data;
-    })
+    .then((res) => res.data)
     .then((data) => data)
     .catch((err) => {
-      console.log(err);
+      console.log('deu ruim', err);
     });
 
   return products;
@@ -22,14 +26,6 @@ export const sendLogin = async (url, email, password) => {
     password,
   };
 
-  const axiosConfig = {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-
-    },
-  };
   const response = await axios.post(url, data, axiosConfig);
 
   return response;
@@ -43,15 +39,17 @@ export const sendRegister = async (name, email, password, role) => {
     role,
   };
 
-  const axiosConfig = {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-
-    },
-  };
   const response = await axios.post('http://localhost:3001/register', data, axiosConfig);
+
+  return response;
+};
+
+export const requestUser = async (url, email) => {
+  const data = {
+    email,
+  };
+
+  const response = await axios.post(url, data, axiosConfig);
 
   return response;
 };
