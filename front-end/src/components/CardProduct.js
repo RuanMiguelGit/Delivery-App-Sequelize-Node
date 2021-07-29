@@ -1,29 +1,49 @@
-/* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import appContext from '../context/appContext';
+import Button from './Button';
 
 import '../Styles/CardProduct.css';
 
-import Button from './Button';
-
 export default function CardProduct({ item }) {
-  const { id, name, price, url_image: urlImage } = item;
+  const { id, name, price, urlImage } = item;
+  const priceBr = price.replace('.', ',');
 
   const { cart, setCart } = useContext(appContext);
   const [quantity, setQuantity] = useState(0);
 
-  useEffect(() => {
+  const number = 25.65;
+  console.log(number.toLocaleString('pt-BR'));
+
+  const updateCart = () => {
+    // condição para garantir que o carrinho esteja limpo dos produtos com quantidade 0
+    if (quantity === 0) {
+      const clearCart = { ...cart };
+      delete clearCart[name];
+      setCart(clearCart);
+      return;
+    }
+    // Se a quantidade não for 0, cria ou re-cria objeto cart com as propriedade "quantity" e "subTotal"
     const newItem = {
       ...cart,
-      [name]: { ...item, quantity, subTotal: (quantity * price) }
+      [name]: { ...item, quantity, subTotal: (quantity * price).toFixed(2) },
     };
     setCart(newItem);
+  };
+
+  useEffect(() => {
+    updateCart();
   }, [quantity]);
+
+  const updateQuantity = ({ target }) => {
+    if (target.innerText === '+') return setQuantity(quantity + 1);
+    if (target.innerText === '-' && quantity > 0) setQuantity(quantity - 1);
+  };
 
   return (
     <li key={ id }>
-      <p data-testid={ `customer_products__element-card-price-${id}` }>{price}</p>
+      <p data-testid={ `customer_products__element-card-price-${id}` }>{priceBr}</p>
       <img
         className="img-card-product"
         data-testid={ `customer_products__img-card-bg-image-${id}` }
@@ -35,17 +55,20 @@ export default function CardProduct({ item }) {
         testId={ `customer_products__button-card-rm-item-${id}` }
         name="-"
         btnclass="qty-button"
-        onClick={ () => setQuantity(quantity - 1) }
+        onClick={ updateQuantity }
       />
       <input
         data-testid={ `customer_products__input-card-quantity-${id}` }
+        type="number"
         value={ quantity }
+        onClick={ () => setQuantity('') }
+        onChange={ ({ target }) => setQuantity(target.value) }
       />
       <Button
         testId={ `customer_products__button-card-add-item-${id}` }
         name="+"
         btnclass="qty-button"
-        onClick={ () => setQuantity(quantity + 1) }
+        onClick={ updateQuantity }
       />
     </li>
   );
@@ -56,10 +79,6 @@ CardProduct.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     price: PropTypes.string,
-    url_image: PropTypes.string,
+    urlImage: PropTypes.string,
   }).isRequired,
-};
-
-CardProduct.propTypes = {
-  item: PropTypes.object.isRequired,
 };

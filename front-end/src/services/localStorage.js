@@ -14,3 +14,15 @@ export const getUserToken = () => {
   if (user && user[0].token) return user[0].token;
   return '';
 };
+
+export const getUserName = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.name) return user.name;
+  return 'nothing here';
+};
+
+export const clearUserInLocalStorage = () => {
+  const user = JSON.parse(localStorage.clear('user'));
+  if (user && user.name) return user.name;
+  return 'everything';
+};

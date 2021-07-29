@@ -50,7 +50,7 @@ describe(requirement(11), () => {
 describe(requirement(12), () => {
   const cardIds = products.state01.map((el) => el.id);
 
-  test.skip("O avaliador testará os data-testids referentes aos card de cada produto",
+  test("O avaliador testará os data-testids referentes aos card de cada produto",
     async () => {
       for(const id of cardIds){
         await expect(page).toFindElement(
@@ -77,7 +77,7 @@ describe(requirement(12), () => {
 });
 
 describe(requirement(13), () => {
-  test.skip("O avaliador testará se o local storage contém os dados da pessoa usuária", async () => {
+  test("O avaliador testará se o local storage contém os dados da pessoa usuária", async () => {
     const { name, email } = user.customer();
 
     expect((await localStorage(page, "user")).name).toEqual(name);
@@ -85,7 +85,7 @@ describe(requirement(13), () => {
     expect((await localStorage(page, "user")).role).toEqual("customer");
   });
 
-  test.skip("O avaliador testará se o nome do usuário, contido no local storage, também está na navbar", async () => {
+  test("O avaliador testará se o nome do usuário, contido no local storage, também está na navbar", async () => {
     await expect(page).toGetTextFromElement(
       customerProductsPage.element.navbar.userFullName,
       (
@@ -94,13 +94,13 @@ describe(requirement(13), () => {
     );
   });
 
-  test.skip("O avaliador testará se o local storage contém um token válido", async () => {
+  test("O avaliador testará se o local storage contém um token válido", async () => {
     expect(
       !!jwt.verify((await localStorage(page, "user")).token, jwtKey)
     ).toEqual(true);
   });
 
-  test.skip("O avaliador testará se o logout limpa os dados da pessoa usuária local storage", async () => {
+  test("O avaliador testará se o logout limpa os dados da pessoa usuária local storage", async () => {
     await expect(page).toClickOnElement({ selector: customerProductsPage.element.navbar.links.logout });
     await expect(page).toCompareURL(`${host}/login`);
     expect((await localStorage(page, "user"))).toBeUndefined();
@@ -110,7 +110,7 @@ describe(requirement(13), () => {
 describe(requirement(14), () => {
   const cards = products.state01;
 
-  test.skip("O avaliador testará se os dados de cada card condizem com os dados esperados",
+  test("O avaliador testará se os dados de cada card condizem com os dados esperados",
     async () => {
       for(const { id, name, price, url_image: urlImage } of cards){
         await expect(page).toGetTextFromElement(
@@ -208,7 +208,7 @@ describe(requirement(15), () => {
     );
   };
 
-  test.skip(`O avaliador testará se adição do item: \`${JSON.stringify(
+  test(`O avaliador testará se adição do item: \`${JSON.stringify(
     randomItem1
   )}\`, também altera sua quantidade`, async () => {
     const { productId, quantity } = randomItem1;
@@ -216,7 +216,7 @@ describe(requirement(15), () => {
     await addItem(productId, quantity);
   });
 
-  test.skip(`O avaliador testará se após a adição do item: \`${JSON.stringify(
+  test(`O avaliador testará se após a adição do item: \`${JSON.stringify(
     randomItem2
   )}\`, a remoção não resultará em quantidades negativas`, async () => {
     const { productId, quantity } = randomItem2;
@@ -226,7 +226,7 @@ describe(requirement(15), () => {
     await addItem(productId, quantity);
   });
 
-  test.skip(`O avaliador testará se definição manual do item: \`${JSON.stringify(
+  test(`O avaliador testará se definição manual do item: \`${JSON.stringify(
     randomItem3
   )}\`, retornará o valor total correto`, async () => {
     const { productId, quantity, subTotal } = randomItem3;
@@ -239,7 +239,7 @@ describe(requirement(15), () => {
     );
   });
 
-  test.skip("O avaliador testará o fluxo completo de adição de itens, validando o valor total de produtos", async () => {
+  test("O avaliador testará o fluxo completo de adição de itens, validando o valor total de produtos", async () => {
     expect(
       await action.customer.validateProductsTotalPrice(page, itemList)
     ).toBeTruthy();
@@ -247,7 +247,7 @@ describe(requirement(15), () => {
 });
 
 describe(requirement(16), () => {
-  test.skip("O avaliador testará a existência de um botão de carrinho com um valor total válido e que seja capaz de nos direcionar a tela de checkout", async () => {
+  test("O avaliador testará a existência de um botão de carrinho com um valor total válido e que seja capaz de nos direcionar a tela de checkout", async () => {
     const itemList = action.customer.getRandomProducts();
     showCurrentCart(itemList, global.__TESTDESC__);
 

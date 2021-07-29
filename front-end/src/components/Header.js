@@ -1,9 +1,18 @@
 import React from 'react';
-import '../Styles/Header.css';
+import { useHistory } from 'react-router-dom';
+
 import Button from './Button';
+import { getUserName, clearUserInLocalStorage } from '../services/localStorage';
+
+import '../Styles/Header.css';
 
 export default function Header() {
-  // const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  const logout = () => {
+    history.push('/login');
+    clearUserInLocalStorage();
+  };
 
   return (
     <header>
@@ -12,23 +21,26 @@ export default function Header() {
           testId="customer_products__element-navbar-link-products"
           name="Produtos"
           btnclass="link-button"
+          onClick={ () => history.push('/customer/products') }
         />
         <Button
           testId="customer_products__element-navbar-link-orders"
           name="Meus Pedidos"
           btnclass="link-button"
+          onClick={ () => history.push('/customer/orders') }
         />
       </div>
       <div>
         <Button
           testId="customer_products__element-navbar-user-full-name"
-          name="Zé cachaça"
+          name={ getUserName() }
           btnclass="link-button"
         />
         <Button
           testId="customer_products__element-navbar-link-logout"
           name="Sair"
           btnclass="link-button"
+          onClick={ logout }
         />
       </div>
     </header>
