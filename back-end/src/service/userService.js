@@ -4,7 +4,7 @@ const userValidator = require('../schemas/userValidator');
 
 const login = async (email, hash) => {
   const { message, code } = await validator.loginUservalidator(email, hash); 
-  const {token} = await validator.tokenGenerator(email, hash)
+  const { token } = await validator.tokenGenerator(email, hash);
 
   if (message) return { message, code };
     const data = await user.findOne({
@@ -27,4 +27,3 @@ const login = async (email, hash) => {
     login,
     register,
   };
-  

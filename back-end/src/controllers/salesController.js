@@ -33,14 +33,14 @@ const getAllSalesProducts = async (req, res) => {
 };
 // ----------------------------------------------------------------------
 
-//teste com POST **UTILIZAR CAMEL CASE NA CREATED**
+// teste com POST **UTILIZAR CAMEL CASE NA CREATED**
 const createSale = async (req, res) => {
   const { userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status } = req.body;
   try {
     const data = await sale.create({
       userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status,
     });
-    const created = await sale.findOne({ where: { id: data.id } })
+    const created = await sale.findOne({ where: { id: data.id } });
 
     return res.status(200).json(created);
   } catch (err) {
@@ -48,7 +48,7 @@ const createSale = async (req, res) => {
   }
 };
 
-//callbacks validas
+// callbacks validas
 
 module.exports = {
   getAllSalesUser,

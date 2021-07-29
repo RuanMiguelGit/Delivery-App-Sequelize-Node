@@ -22,6 +22,6 @@ Button.propTypes = {
   testId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   btnclass: PropTypes.string.isRequired,
-  disable: PropTypes.bool,
-  onClick: PropTypes.func,
+  disable: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

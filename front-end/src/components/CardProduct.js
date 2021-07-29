@@ -34,7 +34,7 @@ export default function CardProduct({ item }) {
 
   useEffect(() => {
     updateCart();
-  }, [quantity]);
+  }, [quantity, updateCart]);
 
   const updateQuantity = ({ target }) => {
     if (target.innerText === '+') return setQuantity(quantity + 1);
@@ -42,7 +42,7 @@ export default function CardProduct({ item }) {
   };
 
   return (
-    <li key={ id }>
+    <li>
       <p data-testid={ `customer_products__element-card-price-${id}` }>{priceBr}</p>
       <img
         className="img-card-product"

@@ -7,7 +7,9 @@ const login = async (req, res) => {
     const hash = crypto.createHash('md5').update(password).digest('hex');
     const { message, code, data, token } = await userService.login(email, hash);
     if (message) return res.status(code).json({ message });
-    return res.status(200).json({ user: {name:data.name, email:data.email, role:data.role, token:token} });
+    return res.status(200).json({ 
+      user: { name: data.name, email: data.email, role: data.role, token }, 
+    });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

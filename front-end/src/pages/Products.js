@@ -11,7 +11,7 @@ import Header from '../components/Header';
 // import mockProducts from '../services/mockProducts.json'
 
 export default function Products() {
-  const { cart, setCart } = useContext(appContext);
+  const { cart } = useContext(appContext);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
@@ -24,7 +24,7 @@ export default function Products() {
         // console.log('retorno API', data);
         setProducts(data);
       });
-      // console.log('dado mockado', mockProducts.products)
+    // console.log('dado mockado', mockProducts.products)
     // setProducts(mockProducts.products); // dados mockados
     setLoading(false);
   }, []);
@@ -35,18 +35,20 @@ export default function Products() {
       .toFixed(2)
       .replace('.', ',');
     console.log(values);
-    setTotal(values)
+    setTotal(values);
   }, [cart]);
 
   return (
     <>
       <Header />
       <ul>
-        {loading 
-        ? <loading /> 
-        : products.map(product => <CardProduct item={ product } />)}
+        {loading
+          ? <loading />
+          : products
+            .map((product) => <CardProduct key={ product.id } item={ product } />)}
       </ul>
       <button
+        type="button"
         data-testid="customer_products__button-cart"
         className="total-button"
         onClick={ () => history.push('/customer/checkout') }
