@@ -1,15 +1,26 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function DropDown({ name, selectClass }) {
+export default function DropDown({ selectClass, value, change, state}) {
+  const [loading, setLoading] = useState(false);
+
   return (
- <select className={selectClass}>
-     <option> {name}</option>
+
+    <select className={selectClass}
+     value={value}
+     onChange={ (e) => change(e.target.value) }
+     >
+   {loading ? <p>Carregando</p>: state.map(item => {
+     return <option value={ item.name }> {item.name}  </option>
+   })}
+   <option>adasd</option>
+
+   {console.log('state', state.map(item => item.name ))}
  </select>
   );
 }
 
 DropDown.propTypes = {
-  name: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
 };
