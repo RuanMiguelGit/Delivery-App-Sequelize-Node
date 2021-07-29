@@ -11,14 +11,10 @@ const axiosConfig = {
 };
 export const getData = async (url) => {
   const products = await axios.get(url)
-    .then((res) => {
-      console.log(res);
-      console.log(res.data);
-      return res.data;
-    })
+    .then((res) => res.data)
     .then((data) => data)
     .catch((err) => {
-      console.log(err);
+      console.log('deu ruim', err);
     });
 
   return products;

@@ -17,11 +17,11 @@ export default function Button({ testId, name, btnclass, disable, onClick }) {
     </button>
   );
 }
+
 Button.propTypes = {
+  testId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   btnclass: PropTypes.string.isRequired,
   disable: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
-  testId: PropTypes.string.isRequired,
-
 };

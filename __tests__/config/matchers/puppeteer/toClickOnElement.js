@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const { result } = require("../../utils/assertionAux");
 
-// *page.click with clickCount is not working
 async function toClickOnElement(page, { selector, clickCount = 0, delay = 0 }) {
   try {
     await page.waitForTimeout(100);

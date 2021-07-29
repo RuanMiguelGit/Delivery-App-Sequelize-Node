@@ -34,8 +34,8 @@ module.exports = {
       {
         id: 6,
         name: 'Skol Beats Senses 313ml',
-        price: 2.79,
-        url_image: 'http://localhost:3001/images/brahma_duplo_malte_350ml.jpg',
+        price: 4.49,
+        url_image: 'http://localhost:3001/images/skol_beats_senses_313ml.jpg',
       },
       {
         id: 7,

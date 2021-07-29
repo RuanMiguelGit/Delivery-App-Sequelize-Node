@@ -174,8 +174,12 @@ describe(requirement(21), () => {
       compare: [
         {
           id: saleId,
-          ...order,
-          salesDate: (date) => {
+          user_id: order.userId,
+          seller_id: order.sellerId,
+          total_price: order.totalPrice,
+          delivery_address: order.deliveryAddress,
+          delivery_number: order.deliveryNumber,
+          "sale_date": (date) => {
             try {
               const received = moment.utc(date);
               const expected = moment.utc(saleDate);
@@ -199,15 +203,15 @@ describe(requirement(21), () => {
 
     const salesProductsExpected = itemList.cart.map(
       ({ productId, quantity }) => ({
-        saleId,
-        productId,
+        sale_id: saleId,
+        product_id: productId,
         quantity,
       })
     );
 
     for (const item of salesProductsExpected) {
       await expect(database).toReturnDataWith({
-        query: [salesProducts.query, "WHERE saleId = ?"].join(" "),
+        query: [salesProducts.query, "WHERE sale_id = ?"].join(" "),
         values: [saleId],
         types: salesProducts.types,
         includes: item,
