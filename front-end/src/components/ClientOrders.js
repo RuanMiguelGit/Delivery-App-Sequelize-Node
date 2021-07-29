@@ -31,10 +31,10 @@ export default function ClientOrders() {
             /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role */
             /* https://developer.mozilla.org/pt-BR/docs/Web/HTML/Global_attributes/tabindex */
             type="button"
-            onClick={ () => history.push(`/orders/${obj.id}`) }
+            onClick={ () => history.push(`/customer/orders/${obj.id}`) }
             role="button"
             tabIndex="0"
-            onKeyDown={ () => history.push(`/orders/${obj.id}`) }
+            onKeyDown={ () => history.push(`/customer/orders/${obj.id}`) }
             key={ index }
             style={ { backgroundColor: 'white', width: '50%' } }
           >

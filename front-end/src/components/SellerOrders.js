@@ -28,13 +28,11 @@ export default function SellerOrders() {
       {
         userSales.map((obj, index) => (
           <div
-            /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role */
-            /* https://developer.mozilla.org/pt-BR/docs/Web/HTML/Global_attributes/tabindex */
             type="button"
-            onClick={ () => history.push(`/orders/${obj.id}`) }
+            onClick={ () => history.push(`/seller/orders/${obj.id}`) }
             role="button"
             tabIndex="0"
-            onKeyDown={ () => history.push(`/orders/${obj.id}`) }
+            onKeyDown={ () => history.push(`/seller/orders/${obj.id}`) }
             key={ index }
             style={ { backgroundColor: 'white', width: '50%' } }
           >
@@ -53,7 +51,7 @@ export default function SellerOrders() {
               { `R$ ${obj.totalPrice.replace('.', ',')} ` }
             </p>
             <p data-testid={ `seller_orders__element-card-address-${obj.id}` }>
-              { `${obj.deliveryAddres}, ${obj.deliveryNumber}` }
+              { `${obj.deliveryAddress}, ${obj.deliveryNumber}` }
             </p>
           </div>
         ))
