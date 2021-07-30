@@ -78,7 +78,6 @@ const Login = () => {
     history.push('/register');
   };
   return (
-
     <form>
       <div className="form">
         <Input
