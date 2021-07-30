@@ -212,7 +212,7 @@ Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.m
 
     - Serão 10 dias de projeto.
 
-    - Data de entrega para avaliação final do projeto: `11/08/2021 - 14:00h`.
+    - Data de entrega para avaliação final do projeto: `dd/mm/yyyy - 14:00h`.
 
 ---
 
@@ -222,9 +222,9 @@ Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.m
 
 1. Clone o repositório
 
-- `git clone git@github.com:tryber/sd-08-project-delivery-app.git`.
+- `git clone git@github.com:tryber/sd-0x-project-delivery-app.git`.
 - Entre na pasta do repositório que você acabou de clonar:
-  - `cd sd-08-project-delivery-app`
+  - `cd sd-0x-project-delivery-app`
 - Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
 
 2. Instale as dependências
@@ -261,7 +261,7 @@ Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.m
 
 6. Crie um novo `Pull Request` _(PR)_
 
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-08-project-delivery-app/pulls)
+- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-delivery-app/pulls)
 - Clique no botão verde _"New pull request"_
 - Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
 - Coloque um título para a sua _Pull Request_
@@ -269,7 +269,7 @@ Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.m
 - Clique no botão verde _"Create pull request"_
 - Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
 - **Não se preocupe em preencher mais nada por enquanto!**
-- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-08-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
+- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-delivery-app/pulls) e confira que o seu _Pull Request_ está criado
 
 7. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Linter_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
@@ -353,8 +353,8 @@ Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu 
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-- `sd-08-project-delivery-app/back-end/package.json`
-- `sd-08-project-delivery-app/front-end/package.json`
+- `sd-0x-project-delivery-app/back-end/package.json`
+- `sd-0x-project-delivery-app/front-end/package.json`
 
 Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto de forma individual, ou seja, precisa-se executar esse comando dentro da pasta `back-end` e também na pasta `front-end` e depois `npm run lint` dentro de cada uma dessas pastas, assim você verifica as particularidades individualmente. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
@@ -381,7 +381,7 @@ Caso ainda fique alguma dúvida, você pode consultar nosso conteúdo sobre [`ES
 
 O projeto já provê uma estrutura inicializada do ORM (em `./back-end/src/database`); Aqui, é necessário que você desenvolva as **migrations** e **seeders** corretamente, seguindo o modelo em `./db.example.sql` (esse arquivo serve como referência, e não tem qualquer influência sobre a aplicação ou avaliação).
 
-⚠️ **IMPORTANTE** ⚠️ : O avaliador usará os valores `default` contidos no arquivo `./back-end/src/database/config/config.js` que já vem no projeto, por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
+⚠️ **IMPORTANTE** ⚠️ : O avaliador usará valores `default` no arquivo `./back-end/src/database/config/config.js` que já vem no projeto caso nada seja definido. Por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
 
 Esse projeto fornece por padrão o arquivo `.sequelizerc` em `.back-end` para configurações do padrão de pastas no Sequelize.
 
@@ -772,7 +772,8 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se ao final do checkout o endereço da url contém o id do pedido, exemplo, se o id gerado for `3`, então: `localhost:3000/customer/orders/3`.
+- O avaliador verificará se ao final do checkout é disparado uma request `POST` com uma autorização (`token`) válida que retorne status `201 - Created`;
+- O avaliador verificará se após isso o endereço da url contém o `id` do pedido criado, exemplo, se o `id` gerado for `3`, então: `localhost:3000/customer/orders/3`.
 
 ---
 
@@ -810,6 +811,8 @@ Todos os testes desse arquivo:
 - Vão fazer login com o cliente "Zé Birita";
 - Vão gerar um novo pedido com o preço total presumido e dados aleatórios para utilização nos testes (impresso na tela durante o teste);
 - Vão fazer o checkout desse novo pedido;
+- Vão acessar a `HomePage` do usuário, navegando para a tela de login (que deve fazer o redirecionamento);
+  - *Lembrando que, acessar a tela de login com um usuário já logado, deve fazer o direcionamento para página padrão do mesmo.*
 - Vão navegar para a tela de produtos através do menu de navegação (saindo da tela de detalhes do pedido);
 - Vão navegar para a tela de pedidos do cliente através do menu de navegação;
 - Vão coletar os dados de vendas da tabela `sales` referentes ao usuário (id `3`)
@@ -1365,7 +1368,7 @@ Para sinalizar que o seu projeto está pronto para _"Code Review"_, faça o segu
 
   - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-08`.
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
 
 Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 

@@ -6,10 +6,15 @@ async function toFindElement(page, selector) {
     await page.waitForTimeout(100);
 
     await page.waitForSelector(selector, {
+      visible: true,
       timeout,
     });
 
-    await page.hover(selector);
+    await page.focus(selector)
+      .catch(()=> true);
+
+    await page.hover(selector)
+      .catch(()=> true);
 
     return result(page, true, `Foi possível encontrar o elemento de referência '${selector}'`);
   } catch (e) {
