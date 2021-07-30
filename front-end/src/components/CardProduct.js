@@ -34,7 +34,7 @@ export default function CardProduct({ item }) {
 
   useEffect(() => {
     updateCart();
-  }, [quantity, updateCart]);
+  }, [quantity]);
 
   const updateQuantity = ({ target }) => {
     if (target.innerText === '+') return setQuantity(quantity + 1);
