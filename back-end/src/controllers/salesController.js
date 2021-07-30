@@ -55,11 +55,17 @@ const createSale = async (req, res) => {
 const getSalesByUser = async (req, res) => {
   const { email } = req.body;
   try {
-    const { id } = await user.findOne({
+    const { id, role } = await user.findOne({
       where: { email },
     });
+    if (role === 'customer') {
+      const data = await sale.findAll({
+        where: { userId: id },
+      });
+      res.status(200).json(data);
+    }
     const data = await sale.findAll({
-      where: { userId: id },
+      where: { sellerId: id },
     });
     return res.status(200).json(data);
   } catch (err) {
