@@ -15,27 +15,20 @@ where: { email, password: hash },
 
 if (!data || data === null) {
 return {
-message: 'Nome de usuario ou senha Incorretos',
+message: 'Nome de usuário ou senha incorretos',
 code: 404,
 };
 }
 return {};
 };
 
-const tokenGenerator = async (email, hash) => {
-const data = await user.findOne({
-where: { email, password: hash },
-})
-
-.then((res) => res)
-.catch((err) => err);
+const tokenGenerator = async (email) => {
 const jwtConfig = {
 expiresIn: '7d',
 algorithm: 'HS256',
 };
-const { id, name } = data;
 
-const token = jwt.sign({ data: id, email, name }, secret, jwtConfig);
+const token = jwt.sign({ data: email }, secret, jwtConfig);
 return { token };
 };
 
