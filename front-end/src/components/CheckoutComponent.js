@@ -15,7 +15,7 @@ export default function Checkout() {
   const [address, setaddress] = useState('');
   const [number, setnumber] = useState('');
   const [userId, setUserId] = useState('')
-  const [, setError] = useState([]);
+  const [setError] = useState([]);
   const [totalValue, setTotalValue] = useState(0);
   const [status, setstatus] = useState('Pendente');
   const [dropDownValue, setDropDownValue] = useState('Fulana Pereira');
