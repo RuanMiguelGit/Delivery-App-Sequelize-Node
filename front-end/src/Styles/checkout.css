@@ -87,3 +87,17 @@
   width: 200px;
 }
 
+.FinishBuy {
+  background-color: #0a4402;
+  border: none;
+  border-radius: 7%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 40%;
+  margin-top: 5%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}

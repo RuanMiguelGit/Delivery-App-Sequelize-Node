@@ -21,10 +21,14 @@ app.get('/users/sale', usersController.getAllUsersSale);
 app.get('/sales/user', salesController.getAllSalesUser);
 app.get('/sales/products', salesController.getAllSalesProducts);
 app.get('/products/sales', productsController.getAllProductsSales);
+app.get('/users/all', usersController.getAllUsers);
+
 // ----------------------------------------------------------------------
 
 // teste Franco
 app.post('/sales', salesController.createSale);
+app.get('/relation', salesController.createRelation);
+
 
 // rotas validas
 app.post('/login', userController.login);

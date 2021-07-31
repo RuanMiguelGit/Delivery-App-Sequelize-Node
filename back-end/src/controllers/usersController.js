@@ -16,9 +16,36 @@ const getAllUsersSale = async (req, res) => {
   }
 };
 // ----------------------------------------------------------------------
+const getAllSalesUser = async (req, res) => {
+  try {
+    const data = await user.findAll({
+      attributes: { exclude: ['user_id', 'seller_id'] },
+      include: [
+        { model: user, as: 'user', attributes: { exclude: ['id'] } },
+        { model: user, as: 'seller', attributes: { exclude: ['id'] } },
+      ],
+    });
+    console.log(data);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+  }
+};
 
+
+
+const getAllUsers = async (req, res) => {
+  try {
+    const data = await user.findAll({});
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+  }
+};
 // callbacks validas
 
 module.exports = {
   getAllUsersSale,
+  getAllSalesUser,
+  getAllUsers
 };

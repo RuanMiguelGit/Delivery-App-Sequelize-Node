@@ -11,10 +11,10 @@ export default function DropDown({ selectClass, value, change, state}) {
      value={value}
      onChange={ (e) => change(e.target.value) }
      >
-   {loading ? <p>Carregando</p>: state.map(item => {
+   {loading ? <p>Carregando</p>: state.filter(item => item.role ==='seller')
+   .map(item => {
      return <option value={ item.name }> {item.name}  </option>
    })}
-   <option>adasd</option>
 
    {console.log('state', state.map(item => item.name ))}
  </select>

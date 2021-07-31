@@ -1,5 +1,5 @@
 module.exports = (sequelize, _DataTypes) => {
-  const saleProduct = sequelize.define('sale_product', {},
+  const saleProduct = sequelize.define('saleProduct', {},
     { timestamps: false, tableName: 'sales_products' });
   
     saleProduct.associate = (models) => {

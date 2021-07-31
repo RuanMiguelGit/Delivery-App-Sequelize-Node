@@ -53,3 +53,9 @@ export const requestUser = async (url, email) => {
 
   return response;
 };
+
+
+export const sendData = async (url, data) => {
+  const response = await axios.post(url, data, axiosConfig)
+  return response
+}

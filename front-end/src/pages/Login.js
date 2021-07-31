@@ -16,7 +16,7 @@ const Login = () => {
     setLoginPassword,
     loginEmail,
     loginPassword,
-    setUserEmail } = useContext(appContext);
+     } = useContext(appContext);
 
   const [formValid, setValid] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
@@ -45,9 +45,8 @@ const Login = () => {
   }, [loginEmail, loginPassword]);
 
   useEffect(() => {
-    setUserEmail(loginEmail);
     if (userInfo.role === 'customer') return history.push('/customer/products');
-  }, [history, loginEmail, setUserEmail, userInfo]);
+  }, [history, loginEmail, userInfo]);
 
   const SendLogin = async (e) => {
     setLoading(true);
