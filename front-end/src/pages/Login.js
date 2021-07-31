@@ -15,8 +15,7 @@ const Login = () => {
     setLoginEmail,
     setLoginPassword,
     loginEmail,
-    loginPassword,
-     } = useContext(appContext);
+    loginPassword } = useContext(appContext);
 
   const [formValid, setValid] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
@@ -46,6 +45,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo.role === 'customer') return history.push('/customer/products');
+    if (userInfo.role === 'seller') return history.push('/seller/orders');
   }, [history, loginEmail, userInfo]);
 
   const SendLogin = async (e) => {
@@ -77,7 +77,6 @@ const Login = () => {
     history.push('/register');
   };
   return (
-
     <form>
       <div className="form">
         <Input
