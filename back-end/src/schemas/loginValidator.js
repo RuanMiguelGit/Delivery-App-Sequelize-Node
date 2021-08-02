@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const { user } = require('../database/models');
+
 const secret = fs
 .readFileSync('./jwt.evaluation.key', { encoding: 'utf-8' }).trim();
 

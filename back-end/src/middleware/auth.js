@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const secret = fs
-.readFileSync('./jwt.evaluation.key', { encoding: 'utf-8' }).trim()
+.readFileSync('./jwt.evaluation.key', { encoding: 'utf-8' }).trim();
 const notAuth = 401;
 
 module.exports = async (req, res, next) => {
