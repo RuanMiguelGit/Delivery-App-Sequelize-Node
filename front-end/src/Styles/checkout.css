@@ -79,8 +79,9 @@
 }
 
 .facture {
-  background-color: rgb(145, 145, 145);
+  background-color: rgb(170, 180, 175);
   height: 80%;
+  margin-top: -10%;
 }
 
 .dropDown {

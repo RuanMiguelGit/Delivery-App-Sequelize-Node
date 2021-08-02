@@ -47,7 +47,7 @@ const Login = () => {
   useEffect(() => {
     if (userInfo.role === 'customer') return history.push('/customer/products');
     if (userInfo.role === 'seller') return history.push('/seller/orders');
-  }, [history, loginEmail, userInfo]);
+  }, [loginEmail, userInfo]);
 
   const SendLogin = async (e) => {
     setLoading(true);

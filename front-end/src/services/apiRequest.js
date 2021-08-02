@@ -56,5 +56,3 @@ export const requestUser = async (url, email) => {
 
   return response;
 };
-
-

@@ -8,7 +8,7 @@ export default function DropDown({ selectClass, value, change, state, testId }) 
   return (
 
     <select
-      data-testid={testId}
+      data-testid={ testId }
       className={ selectClass }
       value={ value }
       onChange={ (e) => change(e.target.value) }
@@ -31,4 +31,6 @@ DropDown.propTypes = {
   value: PropTypes.string.isRequired,
   change: PropTypes.string.isRequired,
   state: PropTypes.func.isRequired,
+  testId: PropTypes.string.isRequired,
+
 };

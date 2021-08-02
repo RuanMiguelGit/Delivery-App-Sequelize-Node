@@ -1,61 +1,62 @@
 /* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Button from './Button';
 import DropDown from './DropDown';
 import Input from './Input';
 import '../Styles/checkout.css';
-import { getData, sendData } from '../services/apiRequest';
+import { getData } from '../services/apiRequest';
 import { getUserName, getUserToken } from '../services/localStorage';
 import appContext from '../context/appContext';
 import CheckoutTable from './CheckoutTable';
-import axios from 'axios';
 
 export default function Checkout() {
   const [loading, setloading] = useState(false);
   const [sellers, setSellers] = useState([]);
   const [address, setaddress] = useState('');
   const [number, setnumber] = useState('');
-  const [idUser, setIdUser] = useState('');
-  const [user, setUser] = useState('')
-  const [sellerId, setSellerId] = useState('')
-  const [products, setProducts] = useState([])
-  const [setError] = useState([]);
+  const [quantity, setQuantity] = useState([]);
+  const [user, setUser] = useState('');
+  const [sellerId, setSellerId] = useState('');
+  const [products, setProducts] = useState([]);
   const [totalValue, setTotalValue] = useState(0);
   const [status] = useState('Pendente');
   const [dropDownValue, setDropDownValue] = useState('Fulana Pereira');
   const history = useHistory();
   const userName = getUserName();
-  const token = getUserToken()
+  const token = getUserToken();
   const {
     cart, setCart,
   } = useContext(appContext);
 
-  
-   useEffect(() => {
-     setProducts(Object.values(cart).map((item) => item.id),
-     )
+  useEffect(() => {
+    setQuantity(Object.values(cart).map((item) => item.quantity));
+  }, []);
+
+  useEffect(() => {
+    setProducts(Object.values(cart).map((item) => item.id));
   }, []);
   const sellMade = async () => {
     const data = {
       userId: user,
-      sellerId: sellerId,
+      sellerId,
       totalPrice: totalValue,
       deliveryAddress: address,
       deliveryNumber: number,
-      status:status,
-      products: products
-    }
-    const url= 'http://localhost:3001/sales'
+      status,
+      products,
+      quantity,
+    };
+    const url = 'http://localhost:3001/sales';
     setloading(true);
     const info = await axios.post(url, data, {
       headers: {
-        authorization: token
+        authorization: token,
       },
-    })
+    });
     setloading(false);
     history.push(`/customer/orders/${info.data}`);
-
   };
 
   useEffect(() => {
@@ -63,7 +64,8 @@ export default function Checkout() {
     if (cart.length === 0) return setTotalValue(0);
     if (cart.length !== 0) {
       return setTotalValue(Object.values(cart)
-        .map((item) => +item.subTotal).reduce((acc, tt) => acc + tt).toFixed(2).replace(/\./g,','));
+        .map((item) => +item.subTotal).reduce((acc, tt) => acc + tt).toFixed(2)
+        .replace(/\./g, ','));
     }
     // console.log(totalValue)
   }, [cart]);
@@ -73,9 +75,9 @@ export default function Checkout() {
     getData('http://localhost:3001/users/all')
       .then((res) => {
         setSellers(res);
-        setUser(res.find((item) => item.name === userName).id,)
-        setSellerId( res.find((item) => item.name === dropDownValue).id)
-        console.log(res)
+        setUser(res.find((item) => item.name === userName).id);
+        setSellerId(res.find((item) => item.name === dropDownValue).id);
+        console.log(res);
       });
     setloading(false);
   }, []);
@@ -95,7 +97,9 @@ export default function Checkout() {
           data-testid="customer_checkout__element-order-total-price"
           className="totalToPay"
         >
-          Total: R$ {totalValue}
+          Total: R$
+          {' '}
+          {totalValue}
         </h1>
       </div>
       <h1 className="titleDetails">Detalhes e Endereço de entrega</h1>

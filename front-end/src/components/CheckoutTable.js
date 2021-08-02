@@ -21,42 +21,46 @@ const CheckoutTable = ({ cart, loading, setCart }) => {
         </thead>
         <tbody>
           {loading ? 'Carregando' : Object.values(cart)
-            .map((item, index) => (
+            .map((item, i) => (
               <tr key={ item.id }>
                 <td
-                  data-testid={ `customer_checkout__element-order-table-item-number-${index }` }
+                  data-testid={
+                    `customer_checkout__element-order-table-item-number-${i}`
+                  }
                   className="tableId"
                 >
-                  {index + 1 }
+                  {i + 1 }
                 </td>
                 <td
-                  data-testid={ `customer_checkout__element-order-table-name-${index }` }
+                  data-testid={ `customer_checkout__element-order-table-name-${i}` }
                   className="tableDesc"
                 >
                   {item.name}
                 </td>
                 <td
-                  data-testid={ `customer_checkout__element-order-table-quantity-${index }` }
+                  data-testid={ `customer_checkout__element-order-table-quantity-${i}` }
                   className="tableQua"
                 >
                   {item.quantity}
                 </td>
                 <td
-                  data-testid={ `customer_checkout__element-order-table-unit-price-${index }` }
+                  data-testid={ `customer_checkout__element-order-table-unit-price-${i}` }
                   className="tableVal"
                 >
-                  {item.price.replace(/\./g,',')}
+                  {item.price.replace(/\./g, ',')}
                 </td>
                 <td
-                  data-testid={ `customer_checkout__element-order-table-sub-total-${index }` }
+                  data-testid={ `customer_checkout__element-order-table-sub-total-${i}` }
                   className="tableTotal"
                 >
-                  {item.subTotal.replace(/\./g,',')}
+                  {item.subTotal.replace(/\./g, ',')}
                 </td>
                 <td>
                   <button
                     type="submit"
-                    data-testid={ `customer_checkout__element-order-table-remove-${index }` }
+                    data-testid={
+                      `customer_checkout__element-order-table-remove-${i}`
+                    }
                     onClick={ () => removeItem(item.id) }
                     className="tableButton"
                     name="Remover"
