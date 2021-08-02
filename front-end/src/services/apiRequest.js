@@ -1,3 +1,5 @@
+import { getUserToken } from './localStorage';
+
 /* eslint-disable */
 const axios = require('axios');
 
@@ -6,6 +8,7 @@ const axiosConfig = {
     'Content-Type': 'application/json;charset=UTF-8',
     'Access-Control-Allow-Origin': '*',
     Accept: 'application/json',
+    authorization: getUserToken(),
 
   },
 };

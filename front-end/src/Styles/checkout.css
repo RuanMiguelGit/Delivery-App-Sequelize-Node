@@ -1,0 +1,104 @@
+.tableBody {
+  background-color: aliceblue;
+  color: black;
+  margin-left: 25%;
+  width: 47%;
+
+}
+
+.tableId {
+  background-color: rgb(2, 2, 41);
+  color: white;
+  text-align: center;
+}
+
+.tableDesc {
+  background-color: rgb(3, 43, 33);
+  color: white;
+  text-align: center;
+}
+
+.tableQua {
+  background-color: rgb(2, 2, 41);
+  color: white;
+  text-align: center;
+}
+
+.tableVal {
+  background-color: rgba(32, 124, 93, 0.938);
+  color: white;
+  text-align: center;
+}
+
+.tableTotal {
+  background-color: rgb(255, 187, 0);
+  color: white;
+  text-align: center;
+}
+
+.tableButton {
+  background-color: #021444;
+  border: none;
+  border-radius: 7%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  display: inline-block;
+  font-size: 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.aboveText {
+  background-color: white;
+  margin-left: 25%;
+  margin-top: 10%;
+  text-align: center;
+  width: 47%;
+}
+
+.totalToPay {
+  background-color: rgb(8, 79, 112);
+  border-radius: 10%;
+  color: white;
+  margin-left: 55%;
+  width: 15%;
+}
+
+.detailsOfSell {
+  background-color: white;
+  height: 80px;
+  margin-left: 26%;
+}
+
+.titleDetails {
+  background-color: white;
+  margin-left: 26%;
+  text-align: center;
+  width: 45%;
+}
+
+.facture {
+  background-color: rgb(170, 180, 175);
+  height: 80%;
+  margin-top: -10%;
+}
+
+.dropDown {
+  width: 200px;
+}
+
+.FinishBuy {
+  background-color: #0a4402;
+  border: none;
+  border-radius: 7%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 40%;
+  margin-top: 5%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}
