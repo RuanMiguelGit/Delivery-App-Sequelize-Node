@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 import '../Styles/Login.css';
 import { sendLogin } from '../services/apiRequest';
 import { saveUserInLocalStorage } from '../services/localStorage';
+
 const six = 6;
 const Login = () => {
   const {

@@ -11,7 +11,7 @@ export const getUserRole = () => {
 
 export const getUserToken = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user && user[0].token) return user[0].token;
+  if (user && user.token) return user.token;
   return '';
 };
 

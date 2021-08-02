@@ -1,5 +1,5 @@
 const { sale, user } = require('../database/models');
-
+const message = 'Algo deu errado'
 // callback criadas para testes das associações
 const getAllUsersSale = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const getAllUsersSale = async (req, res) => {
     console.log(data);
     return res.status(200).json(data);
   } catch (err) {
-    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+    return res.status(500).json({ message: message, err: err.message });
   }
 };
 // ----------------------------------------------------------------------
@@ -28,18 +28,16 @@ const getAllSalesUser = async (req, res) => {
     console.log(data);
     return res.status(200).json(data);
   } catch (err) {
-    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+    return res.status(500).json({ message: message, err: err.message });
   }
 };
-
-
 
 const getAllUsers = async (req, res) => {
   try {
     const data = await user.findAll({});
     return res.status(200).json(data);
   } catch (err) {
-    return res.status(500).json({ message: 'Algo deu errado', err: err.message });
+    return res.status(500).json({ message: message, err: err.message });
   }
 };
 // callbacks validas
@@ -47,5 +45,5 @@ const getAllUsers = async (req, res) => {
 module.exports = {
   getAllUsersSale,
   getAllSalesUser,
-  getAllUsers
+  getAllUsers,
 };

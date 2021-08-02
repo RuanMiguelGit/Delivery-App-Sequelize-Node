@@ -38,7 +38,7 @@ const Registro = () => {
 
     // !validEmail(email) || password.length < six
     // || name.length < Twelve ? setValid(true) : setValid(false);
-  }, [name, email, password]);
+  }, [name, email, password, validEmail]);
 
   useEffect(() => {
     if (registerInfo !== 0

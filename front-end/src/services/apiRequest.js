@@ -1,3 +1,5 @@
+import { getUserToken } from './localStorage';
+
 /* eslint-disable */
 const axios = require('axios');
 
@@ -6,6 +8,7 @@ const axiosConfig = {
     'Content-Type': 'application/json;charset=UTF-8',
     'Access-Control-Allow-Origin': '*',
     Accept: 'application/json',
+    authorization: getUserToken(),
 
   },
 };
@@ -55,7 +58,3 @@ export const requestUser = async (url, email) => {
 };
 
 
-export const sendData = async (url, data) => {
-  const response = await axios.post(url, data, axiosConfig)
-  return response
-}
