@@ -49,6 +49,7 @@ const Login = () => {
     if (userInfo.role === 'seller') return history.push('/seller/orders');
   }, [loginEmail, userInfo]);
 
+
   const SendLogin = async (e) => {
     setLoading(true);
     e.preventDefault();
