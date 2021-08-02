@@ -36,7 +36,7 @@ export default function Header() {
         <Button
           testId="customer_products__element-navbar-user-full-name"
           name={ getUserName() }
-          btnclass="link-button"
+          btnclass="link-user"
           disable={ false }
           onClick={ console.log('user') }
         />
