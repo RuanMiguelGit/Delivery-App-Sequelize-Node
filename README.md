@@ -381,7 +381,7 @@ Caso ainda fique alguma dúvida, você pode consultar nosso conteúdo sobre [`ES
 
 O projeto já provê uma estrutura inicializada do ORM (em `./back-end/src/database`); Aqui, é necessário que você desenvolva as **migrations** e **seeders** corretamente, seguindo o modelo em `./db.example.sql` (esse arquivo serve como referência, e não tem qualquer influência sobre a aplicação ou avaliação).
 
-⚠️ **IMPORTANTE** ⚠️ : O avaliador usará os valores `default` contidos no arquivo `./back-end/src/database/config/config.js` que já vem no projeto, por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
+⚠️ **IMPORTANTE** ⚠️ : O avaliador usará valores `default` no arquivo `./back-end/src/database/config/config.js` que já vem no projeto caso nada seja definido. Por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
 
 Esse projeto fornece por padrão o arquivo `.sequelizerc` em `.back-end` para configurações do padrão de pastas no Sequelize.
 
@@ -772,7 +772,8 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se ao final do checkout o endereço da url contém o id do pedido, exemplo, se o id gerado for `3`, então: `localhost:3000/customer/orders/3`.
+- O avaliador verificará se ao final do checkout é disparado uma request `POST` com uma autorização (`token`) válida que retorne status `201 - Created`;
+- O avaliador verificará se após isso o endereço da url contém o `id` do pedido criado, exemplo, se o `id` gerado for `3`, então: `localhost:3000/customer/orders/3`.
 
 ---
 
@@ -810,6 +811,8 @@ Todos os testes desse arquivo:
 - Vão fazer login com o cliente "Zé Birita";
 - Vão gerar um novo pedido com o preço total presumido e dados aleatórios para utilização nos testes (impresso na tela durante o teste);
 - Vão fazer o checkout desse novo pedido;
+- Vão acessar a `HomePage` do usuário, navegando para a tela de login (que deve fazer o redirecionamento);
+  - *Lembrando que, acessar a tela de login com um usuário já logado, deve fazer o direcionamento para página padrão do mesmo.*
 - Vão navegar para a tela de produtos através do menu de navegação (saindo da tela de detalhes do pedido);
 - Vão navegar para a tela de pedidos do cliente através do menu de navegação;
 - Vão coletar os dados de vendas da tabela `sales` referentes ao usuário (id `3`)
