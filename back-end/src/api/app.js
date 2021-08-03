@@ -34,6 +34,6 @@ app.get('/relation', salesController.createRelation);
 app.post('/login', userController.login);
 app.post('/register', userController.register);
 app.get('/products', productsController.getProducts);
-app.post('/customer/orders', salesController.getSalesByUser);
+app.post('/orders', salesController.getSalesByUser);
 
 module.exports = app;

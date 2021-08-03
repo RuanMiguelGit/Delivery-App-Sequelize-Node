@@ -12,7 +12,7 @@ export default function SellerOrders() {
   useEffect(() => {
     const email = getUserEmail();
     setLoading(true);
-    requestUser('http://localhost:3001/customer/orders', email)
+    requestUser('http://localhost:3001/orders', email)
       .then((data) => {
         setUserSales(data.data);
       });
