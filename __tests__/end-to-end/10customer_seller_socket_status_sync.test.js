@@ -48,15 +48,16 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  sellerPage && await sellerPage.removeAllListeners() && await sellerPage.close()
-  sellerContext && await sellerContext.close();
+  sellerPage && sellerPage.removeAllListeners && await sellerPage.removeAllListeners();
+  sellerPage && sellerPage.close && await sellerPage.close();
+  sellerContext && sellerContext.close && await sellerContext.close();;
   sellerPage = undefined;
   sellerContext = undefined;
 });
 
 describe(requirement(36), () => {
   test("O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de detalhes do pedido do cliente", async () => {
-    expect(await updateStatus({ situation: 1, COD: page, SOD: sellerPage, realTime: true })).toBeTruthy()
+    expect(await updateStatus({ situation: 1, COD: page, SOD: sellerPage, currentOrder, realTime: true })).toBeTruthy()
   });
 });
 
