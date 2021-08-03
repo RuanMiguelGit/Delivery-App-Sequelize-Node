@@ -5,7 +5,7 @@ export const saveUserInLocalStorage = (user) => {
 
 export const getUserRole = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user && user[0].role) return user[0].role;
+  if (user && user.role) return user.role;
   return 'nothing here';
 };
 

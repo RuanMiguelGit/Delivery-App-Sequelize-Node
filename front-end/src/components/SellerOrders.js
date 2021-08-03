@@ -44,7 +44,7 @@ export default function SellerOrders() {
               {`Status: ${obj.status}`}
             </p>
             <p data-testid={ `seller_products__element-order-date-${obj.id}` }>
-              {obj.saleDate}
+              {new Date(obj.saleDate).toLocaleDateString()}
             </p>
             <p
               data-testid={ `seller_orders__element-card-price-${obj.id}` }
