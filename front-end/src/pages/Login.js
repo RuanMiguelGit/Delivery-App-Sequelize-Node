@@ -25,9 +25,8 @@ const Login = () => {
 
   useEffect(() => {
     const isLoggedIn = getUserRole();
-    console.log('isLoggedIn', isLoggedIn, !!isLoggedIn);
-    if (!!isLoggedIn && isLoggedIn === 'customer') history.push('/customer/products');
-    else if (!!isLoggedIn && isLoggedIn === 'seller') history.push('/seller/orders');
+    if (isLoggedIn === 'customer') history.push('/customer/products');
+    else if (isLoggedIn === 'seller') history.push('/seller/orders');
   }, []);
 
   useEffect(() => {
