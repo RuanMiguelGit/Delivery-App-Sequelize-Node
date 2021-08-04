@@ -1,24 +1,33 @@
-/* eslint-disable */
-import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import appContext from '../context/appContext';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Error from '../components/Error';
-import Products from './Products';
-import Loading from '../components/Loading.js';
+import Loading from '../components/Loading';
 import '../Styles/Login.css';
-import { useHistory, Redirect } from 'react-router-dom';
 import { sendLogin } from '../services/apiRequest';
-// import { saveUserInLocalStorage, getUserRole, getUserToken } from '../services/localStorage';
+import { saveUserInLocalStorage, getUserRole } from '../services/localStorage';
 
+const six = 6;
 const Login = () => {
-  const { setLoginEmail, setLoginPassword, loginEmail, loginPassword } = useContext(appContext);
+  const {
+    setLoginEmail,
+    setLoginPassword,
+    loginEmail,
+    loginPassword } = useContext(appContext);
+
   const [formValid, setValid] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
   const [reqError, setReqError] = useState([]);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    const isLoggedIn = getUserRole();
+    if (isLoggedIn === 'customer') history.push('/customer/products');
+    else if (isLoggedIn === 'seller') history.push('/seller/orders');
+  }, []);
 
   useEffect(() => {
     setReqError([]);
@@ -34,12 +43,16 @@ const Login = () => {
   };
 
   useEffect(() => {
-    !validEmail(loginEmail) || loginPassword.length < 6 ? setValid(true) : setValid(false);
+    if (!validEmail(loginEmail) || loginPassword.length < six) {
+      return setValid(true);
+    }
+    return setValid(false);
   }, [loginEmail, loginPassword]);
 
   useEffect(() => {
-    if (userInfo !== 0 && userInfo.role === 'customer') return history.push('/customer/products');
-  }, [history, userInfo]);
+    if (userInfo.role === 'customer') return history.push('/customer/products');
+    if (userInfo.role === 'seller') return history.push('/seller/orders');
+  }, [loginEmail, userInfo]);
 
   const SendLogin = async (e) => {
     setLoading(true);
@@ -48,6 +61,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         setUserInfo(res.data.user);
+        saveUserInLocalStorage(res.data.user);
       })
       .catch((error) => {
         setReqError(error.response.data.message);
@@ -61,7 +75,6 @@ const Login = () => {
       return <Loading />;
     } if (reqError.length > 0) {
       return <Error error={ reqError } testId="common_login__element-invalid-email" />;
-      setLoading(false);
     }
     return null;
   };
@@ -69,38 +82,45 @@ const Login = () => {
   const Register = () => {
     history.push('/register');
   };
+
   return (
-
     <form>
+      <div className="form">
+        <Input
+          name="email"
+          type="input"
+          value={ loginEmail }
+          change={ setLoginEmail }
+          inputclass="input-back"
+          testId="common_login__input-email"
+        />
+        <Input
+          name="senha"
+          type="password"
+          value={ loginPassword }
+          change={ setLoginPassword }
+          inputclass="input-back"
+          testId="common_login__input-password"
+        />
 
-      <label>
-        <div className="form">
-          <Input
-            name="email"
-            type="input"
-            value={ loginEmail }
-            change={ setLoginEmail }
-            inputclass="input-back"
-            testId="common_login__input-email"
-          />
-          <Input
-            name="senha"
-            type="password"
-            value={ loginPassword }
-            change={ setLoginPassword }
-            inputclass="input-back"
-            testId="common_login__input-password"
-          />
+        <Button
+          onClick={ SendLogin }
+          disable={ formValid }
+          btnclass="LoginButton"
+          name="Entrar"
+          testId="common_login__button-login"
+        />
+        <Button
+          onClick={ Register }
+          disable={ false }
+          btnclass="Noaccount"
+          name="Ainda não tenho conta"
+          testId="common_login__button-register"
+        />
+        {errorDisplay()}
 
-          <Button onClick={ SendLogin } disable={ formValid } btnclass="LoginButton" name="Entrar" testId="common_login__button-login" />
-          <Button onClick={ Register } disable={ false } btnclass="Noaccount" name="Ainda não tenho conta" testId="common_login__button-register" />
-          {errorDisplay()}
+      </div>
 
-        </div>
-      </label>
-      {/* {loading ? <Loading /> : reqError.length !== 0 ? <Error error={reqError}/> :''} */}
-
-      {/* {loading ? <Loading />:<p>{reqError.map(item => item.message)}</p>} */}
     </form>
   );
 };

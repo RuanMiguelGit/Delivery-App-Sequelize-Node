@@ -38,16 +38,16 @@ const Registro = () => {
 
     // !validEmail(email) || password.length < six
     // || name.length < Twelve ? setValid(true) : setValid(false);
-  }, [name, email, password, validEmail]);
+  }, [name, email, password]);
 
   useEffect(() => {
     if (registerInfo !== 0
     && registerInfo.role === 'customer') return history.push('/customer/products');
-  }, [history, registerInfo]);
+  }, [registerInfo]);
 
   const registration = async () => {
     setLoading(true);
-    await sendRegister('http://localhost:3001/register', name, email, password, role)
+    await sendRegister(name, email, password, role)
       .then((res) => {
         setRegisterInfo(res.data.newUser);
       })
