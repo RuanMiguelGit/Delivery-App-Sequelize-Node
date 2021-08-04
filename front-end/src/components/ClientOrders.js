@@ -31,7 +31,7 @@ export default function ClientOrders() {
       {
         userSales.map((obj, index) => (
           <div
-            /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role */
+            /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role e */
             /* https://developer.mozilla.org/pt-BR/docs/Web/HTML/Global_attributes/tabindex */
             type="button"
             onClick={ () => history.push(`/customer/orders/${obj.id}`) }
