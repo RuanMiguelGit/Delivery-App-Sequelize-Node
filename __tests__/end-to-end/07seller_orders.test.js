@@ -49,7 +49,7 @@ beforeEach(async () => {
       nonTest: true,
       query: [
         sales.query, 
-        "WHERE userId = ?", 
+        "WHERE user_id = ?", 
         "LIMIT ?"
       ].join(" "),
       values: [2, 10],
@@ -84,10 +84,10 @@ describe(requirement(28), () => {
     for (const {
       id,
       status,
-      salesDate,
-      totalPrice,
-      deliveryAddress,
-      deliveryNumber,
+      sale_date: salesDate,
+      total_price: totalPrice,
+      delivery_address: deliveryAddress,
+      delivery_number: deliveryNumber,
     } of orderList) {
       await expect(page).toGetTextFromElement(
         sellerOrdersPage.element.card.orderId + `[data-testid$='-${id}']`,

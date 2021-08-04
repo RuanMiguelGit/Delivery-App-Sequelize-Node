@@ -10,5 +10,5 @@ module.exports = {
     "../config/matchers/puppeteer",
   ],
   testRegex: "./*\\.test\\.js$",
-  testTimeout: 60000,
+  testTimeout: 180000,
 };

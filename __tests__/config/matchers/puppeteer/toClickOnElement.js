@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const { result } = require("../../utils/assertionAux");
 
-// *page.click with clickCount is not working
 async function toClickOnElement(page, { selector, clickCount = 0, delay = 0 }) {
   try {
     await page.waitForTimeout(100);
@@ -11,7 +10,9 @@ async function toClickOnElement(page, { selector, clickCount = 0, delay = 0 }) {
         ? await page.$eval(
             selector,
             async (element, { clickCount, delay }) => {
-              element.scrollIntoView();
+              try{
+                element.scrollIntoView();
+              }catch(e){}
 
               function jestEvalTestClick(target) {
                 for (const event of [

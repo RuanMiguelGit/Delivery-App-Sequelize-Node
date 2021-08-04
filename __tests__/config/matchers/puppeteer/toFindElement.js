@@ -10,7 +10,11 @@ async function toFindElement(page, selector) {
       timeout,
     });
 
-    await page.hover(selector);
+    await page.focus(selector)
+      .catch(()=> true);
+
+    await page.hover(selector)
+      .catch(()=> true);
 
     return result(page, true, `Foi possível encontrar o elemento de referência '${selector}'`);
   } catch (e) {
