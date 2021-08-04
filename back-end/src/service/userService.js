@@ -3,7 +3,7 @@ const validator = require('../schemas/loginValidator');
 const userValidator = require('../schemas/userValidator');
 
 const login = async (email, hash) => {
-  const { message, code } = await validator.loginUservalidator(email, hash); 
+  const { message, code } = await validator.loginUserValidator(email, hash); 
   const { token } = await validator.tokenGenerator(email);
 
   if (message) return { message, code };
@@ -23,7 +23,7 @@ const login = async (email, hash) => {
     return { data };
 };
   
-  module.exports = {
-    login,
-    register,
-  };
+module.exports = {
+  login,
+  register,
+};

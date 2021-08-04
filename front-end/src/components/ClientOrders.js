@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
 import { useHistory } from 'react-router-dom';
 import { requestUser } from '../services/apiRequest';
 import { getUserEmail } from '../services/localStorage';
 import Loading from './Loading';
+
+import '../Styles/ClientOrders.css';
 
 export default function ClientOrders() {
   const [userSales, setUserSales] = useState([]);
@@ -12,7 +15,7 @@ export default function ClientOrders() {
   useEffect(() => {
     const email = getUserEmail();
     setLoading(true);
-    requestUser('http://localhost:3001/customer/orders', email)
+    requestUser('http://localhost:3001/orders', email)
       .then((data) => {
         setUserSales(data.data);
       });
@@ -28,15 +31,15 @@ export default function ClientOrders() {
       {
         userSales.map((obj, index) => (
           <div
-            /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role */
+            /* https://pt.stackoverflow.com/questions/51391/pra-que-serve-o-atributo-role e */
             /* https://developer.mozilla.org/pt-BR/docs/Web/HTML/Global_attributes/tabindex */
             type="button"
             onClick={ () => history.push(`/customer/orders/${obj.id}`) }
             role="button"
             tabIndex="0"
-            onKeyDown={ () => history.push(`/customer/orders/${obj.id}`) }
+            onKeyDown={ () => console.log('teste') }
             key={ index }
-            style={ { backgroundColor: 'white', width: '50%' } }
+            className="card-order"
           >
             <p data-testid={ `customer_orders__element-order-id-${obj.id}` }>
               {`Pedido ${index + 1}`}
@@ -44,8 +47,8 @@ export default function ClientOrders() {
             <p data-testid={ `customer_orders__element-delivery-status-${obj.id}` }>
               {`Status: ${obj.status}`}
             </p>
-            <p data-testid={ `customer_products__element-order-date-${obj.id}` }>
-              {obj.saleDate}
+            <p data-testid={ `customer_orders__element-order-date-${obj.id}` }>
+              {new Date(obj.saleDate).toLocaleDateString('pt-BR')}
             </p>
             <p
               data-testid={ `customer_orders__element-card-price-${obj.id}` }

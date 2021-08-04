@@ -5,7 +5,7 @@ const { user } = require('../database/models');
 const secret = fs
 .readFileSync('./jwt.evaluation.key', { encoding: 'utf-8' }).trim();
 
-const loginUservalidator = async (email, hash) => {
+const loginUserValidator = async (email, hash) => {
 const data = await user.findOne({
 where: { email, password: hash },
 })
@@ -33,6 +33,6 @@ return { token };
 };
 
 module.exports = {
-loginUservalidator,
+loginUserValidator,
 tokenGenerator,
 };

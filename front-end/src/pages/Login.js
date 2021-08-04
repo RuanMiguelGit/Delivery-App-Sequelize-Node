@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import appContext from '../context/appContext';
@@ -8,7 +7,7 @@ import Error from '../components/Error';
 import Loading from '../components/Loading';
 import '../Styles/Login.css';
 import { sendLogin } from '../services/apiRequest';
-import { saveUserInLocalStorage } from '../services/localStorage';
+import { saveUserInLocalStorage, getUserRole } from '../services/localStorage';
 
 const six = 6;
 const Login = () => {
@@ -23,6 +22,12 @@ const Login = () => {
   const [reqError, setReqError] = useState([]);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    const isLoggedIn = getUserRole();
+    if (isLoggedIn === 'customer') history.push('/customer/products');
+    else if (isLoggedIn === 'seller') history.push('/seller/orders');
+  }, []);
 
   useEffect(() => {
     setReqError([]);
@@ -77,6 +82,7 @@ const Login = () => {
   const Register = () => {
     history.push('/register');
   };
+
   return (
     <form>
       <div className="form">

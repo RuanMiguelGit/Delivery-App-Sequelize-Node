@@ -5,7 +5,7 @@ export const saveUserInLocalStorage = (user) => {
 
 export const getUserRole = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user && user[0].role) return user[0].role;
+  if (user && user.role) return user.role;
   return 'nothing here';
 };
 
@@ -21,8 +21,8 @@ export const getUserName = () => {
   return 'nothing here';
 };
 
-export const clearUserInLocalStorage = () => {
-  JSON.parse(localStorage.clear('user'));
+export const clearUserInLocalStorage = async () => {
+  localStorage.clear('user');
   return 'everything clean';
 };
 

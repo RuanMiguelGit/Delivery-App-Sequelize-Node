@@ -9,9 +9,9 @@ import '../Styles/Header.css';
 export default function Header() {
   const history = useHistory();
 
-  const logout = () => {
+  const logout = async () => {
+    await clearUserInLocalStorage();
     history.push('/login');
-    clearUserInLocalStorage();
   };
 
   return (

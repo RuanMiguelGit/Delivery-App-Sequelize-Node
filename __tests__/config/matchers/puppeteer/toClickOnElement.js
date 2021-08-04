@@ -10,7 +10,9 @@ async function toClickOnElement(page, { selector, clickCount = 0, delay = 0 }) {
         ? await page.$eval(
             selector,
             async (element, { clickCount, delay }) => {
-              element.scrollIntoView();
+              try{
+                element.scrollIntoView();
+              }catch(e){}
 
               function jestEvalTestClick(target) {
                 for (const event of [
