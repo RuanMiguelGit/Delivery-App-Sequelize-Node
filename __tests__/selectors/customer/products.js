@@ -10,7 +10,7 @@ module.exports = {
       userFullName: `[data-testid='${prefix}element-navbar-user-full-name']`,
     },
     card: {
-      price: `[data-testid^='${prefix}element-card-price-']`, // mudar para data-prodid
+      price: `[data-testid^='${prefix}element-card-price-']`,
       title: `[data-testid^='${prefix}element-card-title-']`,
     },
     checkout: {

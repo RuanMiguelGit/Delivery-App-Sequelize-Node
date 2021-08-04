@@ -3,8 +3,7 @@ apps:
   cwd: ./back-end
   script: npm
   args: "start"
-  exec_mode: cluster
-  instances: 2
+  exec_mode: fork
   max_restarts: 3
   max_memory_restart: 200M
   env:
@@ -13,8 +12,7 @@ apps:
   cwd: ./front-end
   script: npm
   args: "run start:build"
-  exec_mode: cluster
-  instances: 2
+  exec_mode: fork
   max_restarts: 3
   max_memory_restart: 200M
   env:
