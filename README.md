@@ -187,6 +187,11 @@ Para facilitar o entendimento, podemos dividir a aplicação em ** 4 fluxos prin
   - (12) Testes de cobertura (`12coverage_tests.test`).
 
 
+- ⚠️ **IMPORTANTE** ⚠️: A tela de login deve ser capaz de direcionar para a tela principal de cada pessoa usuária, sendo as páginas:
+  - Do cliente: `/customer/products`,
+  - Da pessoa vendedora:  `/seller/orders`,
+  - Da pessoa administradora: `/admin/manage`
+
 ## Desenvolvimento
 
 - Para o banco de dados, utilizaremos a biblioteca ORM `Sequelize`, que fará interface com o `MySQL`!
@@ -294,13 +299,13 @@ Você pode ler mais sobre os atributos `data-*` [neste link](https://developer.m
 
 **São os scripts da raiz do projeto (`./package.json`)** *(e não das aplicações individuais `./front-end/package.json` e `./back-end/package.json`)*:
 
-- `start`: Limpa as portas `3000` e `3001` e simula a inicialização no avaliador. Prepara o campo rodando o `Sequelize` para restaurar o **banco de dados de testes** (final `-test`) e sobe a aplicação com `pm2` em modo `cluster` (Duas instâncias pra cada aplicação). Nesse modo as alterações não são assistidas;
+- `start`: Limpa as portas `3000` e `3001` e simula a inicialização no avaliador. Prepara o campo rodando o `Sequelize` para restaurar o **banco de dados de testes** (final `-test`) e sobe a aplicação com `pm2` em modo `fork` (Uma instância pra cada aplicação). Nesse modo as alterações não são assistidas;
   - *uso (na raiz do projeto): `npm start`*
 
 - `stop`: Para e deleta as aplicações rodando no `pm2`;
   - *uso (na raiz do projeto): `npm stop`*
 
-- `dev`: Limpa as portas `3000` e `3001` e sobe a aplicação com `pm2` em modo `fork` para teste local (Uma instância pra cada aplicação), nesse modo, as atualizações são assistidas (modo `watch`);
+- `dev`: Limpa as portas `3000` e `3001` e sobe a aplicação com `pm2` em modo `fork` (Uma instância pra cada aplicação), nesse modo, as atualizações são assistidas (modo `watch`);
   - *uso (na raiz do projeto): `npm run dev`*
 
 - `dev:prestart`: A partir da raiz, esse comando faz o processo de instalação de dependências (`npm i`) nos dois projetos (`./front-end` e `./back-end`) e roda o `Sequelize` no `./back-end` (lembrar de configurar o `.env` no mesmo);
@@ -381,7 +386,7 @@ Caso ainda fique alguma dúvida, você pode consultar nosso conteúdo sobre [`ES
 
 O projeto já provê uma estrutura inicializada do ORM (em `./back-end/src/database`); Aqui, é necessário que você desenvolva as **migrations** e **seeders** corretamente, seguindo o modelo em `./db.example.sql` (esse arquivo serve como referência, e não tem qualquer influência sobre a aplicação ou avaliação).
 
-⚠️ **IMPORTANTE** ⚠️ : O avaliador usará os valores `default` contidos no arquivo `./back-end/src/database/config/config.js` que já vem no projeto, por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
+⚠️ **IMPORTANTE** ⚠️ : O avaliador usará valores `default` no arquivo `./back-end/src/database/config/config.js` que já vem no projeto caso nada seja definido. Por tanto, tome cuidado na hora de fazer qualquer alteração nesse arquivo, pois é através dele que o avaliador utilizará as referências do banco de dados correto para cada situação (desenvolvimento e testes).
 
 Esse projeto fornece por padrão o arquivo `.sequelizerc` em `.back-end` para configurações do padrão de pastas no Sequelize.
 
@@ -772,7 +777,8 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se ao final do checkout o endereço da url contém o id do pedido, exemplo, se o id gerado for `3`, então: `localhost:3000/customer/orders/3`.
+- O avaliador verificará se ao final do checkout é disparado uma request `POST` com uma autorização (`token`) válida que retorne status `201 - Created`;
+- O avaliador verificará se após isso o endereço da url contém o `id` do pedido criado, exemplo, se o `id` gerado for `3`, então: `localhost:3000/customer/orders/3`.
 
 ---
 
@@ -810,6 +816,8 @@ Todos os testes desse arquivo:
 - Vão fazer login com o cliente "Zé Birita";
 - Vão gerar um novo pedido com o preço total presumido e dados aleatórios para utilização nos testes (impresso na tela durante o teste);
 - Vão fazer o checkout desse novo pedido;
+- Vão acessar a `HomePage` do usuário, navegando para a tela de login (que deve fazer o redirecionamento);
+  - *Lembrando que, acessar a tela de login com um usuário já logado, deve fazer o direcionamento para página padrão do mesmo.*
 - Vão navegar para a tela de produtos através do menu de navegação (saindo da tela de detalhes do pedido);
 - Vão navegar para a tela de pedidos do cliente através do menu de navegação;
 - Vão coletar os dados de vendas da tabela `sales` referentes ao usuário (id `3`)
@@ -1017,7 +1025,7 @@ A validação de status consiste em uma série de testes que **devem assegurar q
 
 **O que será avaliado**
 
-- O avaliador testará se alteração do pedido é persistente após a atualização da página.
+- O avaliador testará se alteração do pedido é persistente após atualizar a página fazendo o processo de logout/login.
 
 ---
 
@@ -1045,7 +1053,7 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de detalhes do pedido do cliente após atualização das páginas.
+- O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de detalhes do pedido do cliente após atualização das páginas fazendo o processo de logout/login nas mesmas.
 
 ---
 
@@ -1060,7 +1068,7 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de pedidos do cliente após atualização das páginas.
+- O avaliador verificará se, ao alterar o status do pedido na tela da pessoa vendedora, o mesmo também é alterado na tela de pedidos do cliente após atualização das páginas fazendo o processo de logout/login nas mesmas.
 
 ---
 
@@ -1080,7 +1088,7 @@ Todos os testes desse arquivo:
 
 **O que será avaliado**
 
-- O avaliador verificará se, ao alterar o status do pedido na tela do cliente, o mesmo também é alterado na tela de detalhes do pedido da pessoa vendedora após atualização das páginas.
+- O avaliador verificará se, ao alterar o status do pedido na tela do cliente, o mesmo também é alterado na tela de detalhes do pedido da pessoa vendedora após atualização das páginas fazendo o processo de logout/login nas mesmas.
 
 ---
 
