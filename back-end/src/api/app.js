@@ -35,5 +35,6 @@ app.post('/login', userController.login);
 app.post('/register', userController.register);
 app.get('/products', productsController.getProducts);
 app.post('/orders', salesController.getSalesByUser);
+app.post('/sale/created', salesController.getGeneratedSell);
 
 module.exports = app;

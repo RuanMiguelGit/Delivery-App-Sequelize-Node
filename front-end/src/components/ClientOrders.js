@@ -48,7 +48,7 @@ export default function ClientOrders() {
               {`Status: ${obj.status}`}
             </p>
             <p data-testid={ `customer_orders__element-order-date-${obj.id}` }>
-              {new Date(obj.saleDate).toLocaleDateString()}
+              {new Date(obj.saleDate).toLocaleDateString('pt-BR')}
             </p>
             <p
               data-testid={ `customer_orders__element-card-price-${obj.id}` }

@@ -43,7 +43,7 @@ const Registro = () => {
   useEffect(() => {
     if (registerInfo !== 0
     && registerInfo.role === 'customer') return history.push('/customer/products');
-  }, [history, registerInfo]);
+  }, [registerInfo]);
 
   const registration = async () => {
     setLoading(true);

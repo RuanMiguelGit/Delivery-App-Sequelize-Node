@@ -86,10 +86,28 @@ const createRelation = async (req, res) => {
   return res.status(200).json(data);
 };
 
+const getGeneratedSell = async (req, res) => {
+  const { sellId } = req.body;
+  try {
+    const data = await sale.findOne({
+      where: { id: sellId },
+      attributes: { exclude: ['user_id', 'seller_id'] },
+      include: [
+        { model: user, as: 'seller', attributes: ['name'] },
+        { model: product, as: 'products', through: { attributes: ['quantity'] } }],
+    });
+    console.log(data);
+    return res.status(200).json({ data: [data] });
+  } catch (err) {
+    return res.status(500).json({ message: messageError, err: err.message });
+  }
+};
+
 module.exports = {
   getAllSalesUser,
   getAllSalesProducts,
   createSale,
   getSalesByUser,
   createRelation,
+  getGeneratedSell,
 };
