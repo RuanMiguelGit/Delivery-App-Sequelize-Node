@@ -21,8 +21,8 @@ export const getUserName = () => {
   return 'nothing here';
 };
 
-export const clearUserInLocalStorage = () => {
-  JSON.parse(localStorage.clear('user'));
+export const clearUserInLocalStorage = async () => {
+  localStorage.clear('user');
   return 'everything clean';
 };
 
