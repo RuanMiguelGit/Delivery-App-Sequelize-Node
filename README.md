@@ -11,10 +11,15 @@
 # Habilidades
 
 Manter aderência do código à especificação. Seu programa deve se comportar como especificado no repositório, no protótipo e no Diagrama de ER;
+
 Manter a organização do seu código e a arquitetura geral da aplicação (tanto da API quando do front-end);
+
 Manter aderência ao padrão REST na API;
+
 Respeitar a estrutura do banco de dados. Sua implementação não deve adicionar ou remover tabelas, campos ou relacionamentos e sua API deve estar preparada para aproveitar essa estrutura por completo;
+
 Manter uma cobertura de testes. Seu código deve ser testável e possuir uma suíte de testes unitários e/ou de integração robusta e com alta cobertura.
+
 Implementar a funcionalidade de comunicação em tempo real, utilizando o socket.io.
 Manter aderência aos princípios SOLID;
 
