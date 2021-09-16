@@ -28,8 +28,12 @@ Manter aderência aos princípios SOLID;
 <h1> Como Rodar o projeto</h1>
 <ul>
   <li> Git Clone no Projeto</li>
-  <li> Npm Install</li>
-  <li> Npm start</li>
+  <li> Npm Install no Back-end</li>
+  <li> Npm install no Front-End</li>
+  <li> Adicionar um arquivo .env, o modelo .env.example que se encontra na pasta back-end</li>
+  <li> Adicione uma senha para o JWT no arquivo jwt.evaluation.key </li>
+  <li> Inicie o banco de dados Mysql </li>
+  <li> Rode o projeto com npm run dev:start, esse comando irá restaurar o banco de dados</li>
  </ul>
 
 <h2>Membros do Projeto</h2>
