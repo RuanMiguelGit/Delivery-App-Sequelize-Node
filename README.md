@@ -33,7 +33,7 @@ Manter aderência aos princípios SOLID;
   <li> Adicionar um arquivo .env, o modelo .env.example que se encontra na pasta back-end</li>
   <li> Adicione uma senha para o JWT no arquivo jwt.evaluation.key </li>
   <li> Inicie o banco de dados Mysql </li>
-  <li> Rode o projeto com npm run dev:start, esse comando irá restaurar o banco de dados</li>
+  <li> Rode o projeto com npm run dev:start, esse comando irá restaurar o banco de dados e iniciar a aplicação</li>
  </ul>
 
 <h2>Membros do Projeto</h2>
